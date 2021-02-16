@@ -14,78 +14,89 @@ button {
 
 button:hover {
   opacity: 90%;
-  box-shadow: 0 0 30px rgba(33, 33, 33, 0.2);
+  -webkit-box-shadow: 0 0 30px rgba(33, 33, 33, 0.2);
+          box-shadow: 0 0 30px rgba(33, 33, 33, 0.2);
   cursor: pointer;
 }
 
 .hero {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   height: 600px;
   width: 100%;
 }
-
 .hero__text {
   margin-top: 12rem;
   font-size: 28px;
   text-align: center;
 }
-
 .hero__text h2 {
   font-size: 70px;
   color: black;
 }
 
 .middle {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin: 0;
   position: absolute;
   top: 30%;
 }
-
 .middle button {
   min-width: 300px;
   min-height: 50px;
   font-size: 16px;
 }
-
 .middle .buttonOne {
   margin-right: 3rem;
 }
 
 section .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 3rem;
   border-radius: 1px solid black;
 }
-
 section .container .item {
   width: 22%;
+  height: 500px;
   position: relative;
   border: 5px solid black;
   margin-bottom: 2rem;
   padding: 1rem;
 }
-
 section .container .item img {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  height: 70%;
+  -o-object-fit: contain;
+     object-fit: contain;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
   display: block;
 }
-
+section .container .item hr {
+  width: 60%;
+  margin: 15px auto;
+}
 section .container .item h1 {
   text-align: center;
-  font-size: 28px;
+  font-size: 36px;
 }
-
 section .container .item p {
   text-align: center;
-  font-size: 18px;
+  font-size: 22px;
   padding-bottom: 2rem;
 }
 
@@ -103,25 +114,22 @@ body {
   margin: 200px auto;
   height: 50vh;
   background-color: #651868;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
-
 .maincontainer__head {
   margin: 0 auto;
   text-align: center;
 }
-
 .maincontainer__head h1 {
   font-size: 60px;
 }
-
 .maincontainer__head p {
   font-size: 24px;
 }
-
 .maincontainer__head hr {
   border: 1px solid #40bee4;
   width: 80%;
   margin: 0 auto;
-}
-/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */

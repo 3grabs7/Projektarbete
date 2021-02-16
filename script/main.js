@@ -1,4 +1,5 @@
 const lookMemes = document.querySelector(".buttonOne");
+gifFetch();
 
 lookMemes.addEventListener("click", () => {
   return gifFetch();
@@ -18,7 +19,6 @@ async function gifFetch() {
       url: e.url,
     });
   });
-  console.log(memes);
   loadPage(memes);
 }
 
@@ -30,33 +30,16 @@ function loadPage(memes) {
     img.src = memes[i].url;
     e.append(img);
 
+    let hr = document.createElement('hr');
+    e.append(hr);
+
     let name = document.createElement('h1');
     name.innerHTML = memes[i].name;
     e.append(name);
 
     let cmd = document.createElement('p');
-    cmd.innerHTML = memes[i].cmd;
+    cmd.innerHTML = `Command : <b>${memes[i].cmd}</b>`;
     e.append(cmd);
     
   })
-
-
-
-
-  // memes.forEach(m=> {
-  //   let item = document.createElement('div');
-
-  //   let img = document.createElement('img');
-  //   img.src = m.url;
-  //   item.append(img);
-
-  //   let name = document.createElement('h1');
-  //   name.innerHTML = m.name;
-  //   item.append(name);
-
-  //   let cmd = document.createElement('p');
-  //   cmd.innerHTML = m.cmd;
-  //   item.append(cmd);
-    
-  // })
 }
