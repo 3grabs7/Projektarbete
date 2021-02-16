@@ -15,6 +15,20 @@ button {
 .hero {
   display: flex;
   justify-content: center;
+  height: 600px;
+  width: 100%;
+  background-color: #998a8a;
+}
+
+.hero__text {
+  margin-top: 12rem;
+  font-size: 28px;
+  text-align: center;
+}
+
+.hero__text h2 {
+  font-size: 70px;
+  color: darkred;
 }
 
 .middle {
@@ -24,7 +38,18 @@ button {
   top: 30%;
 }
 
+.middle button {
+  min-width: 300px;
+  min-height: 50px;
+  font-size: 16px;
+}
+
+.middle .buttonOne {
+  margin-right: 3rem;
+}
+
 * {
   margin: 0;
   padding: 0;
-} /*# sourceMappingURL=main.css.map */
+}
+/*# sourceMappingURL=main.css.map */
