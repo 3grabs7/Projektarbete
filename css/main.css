@@ -17,7 +17,6 @@ button {
   justify-content: center;
   height: 600px;
   width: 100%;
-  background-color: #998a8a;
 }
 
 .hero__text {
@@ -28,7 +27,7 @@ button {
 
 .hero__text h2 {
   font-size: 70px;
-  color: darkred;
+  color: black;
 }
 
 .middle {
@@ -51,5 +50,36 @@ button {
 * {
   margin: 0;
   padding: 0;
+}
+
+body {
+  background-color: #a623aa;
+  color: white;
+}
+
+.maincontainer {
+  margin: 200px auto;
+  height: 50vh;
+  background-color: #651868;
+  display: flex;
+}
+
+.maincontainer__head {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.maincontainer__head h1 {
+  font-size: 60px;
+}
+
+.maincontainer__head p {
+  font-size: 24px;
+}
+
+.maincontainer__head hr {
+  border: 1px solid #40bee4;
+  width: 80%;
+  margin: 0 auto;
 }
 /*# sourceMappingURL=main.css.map */
