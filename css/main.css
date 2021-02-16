@@ -1,4 +1,8 @@
-* {
-  margin: 0;
-  padding: 0;
-}/*# sourceMappingURL=main.css.map */
+html {
+  color: black;
+}
+
+footer {
+  color: white;
+}
+/*# sourceMappingURL=main.css.map */
