@@ -23,4 +23,8 @@ button {
   position: absolute;
   top: 30%;
 }
-/*# sourceMappingURL=main.css.map */
+
+* {
+  margin: 0;
+  padding: 0;
+} /*# sourceMappingURL=main.css.map */
