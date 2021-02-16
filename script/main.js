@@ -15,12 +15,6 @@ async function gifFetch() {
     memes.push({
       name: e.name ?? 'unknown',
       cmd: memes.includes({cmd:cmd}) ? `${cmd}${i}` : cmd,
-=======
-  Array.from(json.data.memes).forEach((e) => {
-    memes.push({
-      name: e.name,
-      cmd: e.name.replace(" ", "").slice(0, 3),
->>>>>>> f20e2118554ef89822366f96b3890bd42f1e26d5
       url: e.url,
     });
   });
@@ -29,20 +23,40 @@ async function gifFetch() {
 }
 
 function loadPage(memes) {
-  memes.forEach(m=> {
-    let item = document.createElement('div');
+  let boxes = document.querySelectorAll('.item');
 
+  Array.from(boxes).forEach((e, i) => {
     let img = document.createElement('img');
-    img.src = m.url;
-    item.append(img);
+    img.src = memes[i].url;
+    e.append(img);
 
     let name = document.createElement('h1');
-    name.innerHTML = m.name;
-    item.append(name);
+    name.innerHTML = memes[i].name;
+    e.append(name);
 
     let cmd = document.createElement('p');
-    cmd.innerHTML = m.cmd;
-    item.append(cmd);
-    document.body.append(item);
+    cmd.innerHTML = memes[i].cmd;
+    e.append(cmd);
+    
   })
+
+
+
+
+  // memes.forEach(m=> {
+  //   let item = document.createElement('div');
+
+  //   let img = document.createElement('img');
+  //   img.src = m.url;
+  //   item.append(img);
+
+  //   let name = document.createElement('h1');
+  //   name.innerHTML = m.name;
+  //   item.append(name);
+
+  //   let cmd = document.createElement('p');
+  //   cmd.innerHTML = m.cmd;
+  //   item.append(cmd);
+    
+  // })
 }
