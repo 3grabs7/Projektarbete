@@ -5,4 +5,8 @@ html {
 footer {
   color: white;
 }
-/*# sourceMappingURL=main.css.map */
+
+* {
+  margin: 0;
+  padding: 0;
+}/*# sourceMappingURL=main.css.map */
