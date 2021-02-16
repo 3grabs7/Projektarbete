@@ -1,8 +1,26 @@
-html {
-  color: black;
-}
-
 footer {
   color: white;
+}
+
+button {
+  border-radius: 50px 50px 50px 50px;
+  height: 40px;
+  width: 200px;
+  background-color: #1a1a1a;
+  color: white;
+  font-size: 700;
+  text-align: center;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+}
+
+.middle {
+  display: flex;
+  margin: 0;
+  position: absolute;
+  top: 30%;
 }
 /*# sourceMappingURL=main.css.map */
