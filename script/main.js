@@ -23,23 +23,27 @@ async function gifFetch() {
 }
 
 function loadPage(memes) {
-  let boxes = document.querySelectorAll('.item');
+  let main = document.querySelector('.container');
 
-  Array.from(boxes).forEach((e, i) => {
+  memes.forEach((e) => {
+    let box = document.createElement('div');
+    box.className = 'item';
+
     let img = document.createElement('img');
-    img.src = memes[i].url;
-    e.append(img);
+    img.src = e.url;
+    box.append(img);
 
     let hr = document.createElement('hr');
-    e.append(hr);
+    box.append(hr);
 
     let name = document.createElement('h1');
-    name.innerHTML = memes[i].name;
-    e.append(name);
+    name.innerHTML = e.name;
+    box.append(name);
 
     let cmd = document.createElement('p');
-    cmd.innerHTML = `Command : <b>${memes[i].cmd}</b>`;
-    e.append(cmd);
+    cmd.innerHTML = `Command : <b>${e.cmd}</b>`;
+    box.append(cmd);
     
+    main.append(box);
   })
 }
