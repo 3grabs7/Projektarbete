@@ -14,6 +14,26 @@
       color: black;
     }
   }
+  .search,
+  .submit {
+    margin: 0;
+    position: absolute;
+    top: 36%;
+    width: 38rem;
+    height: 3rem;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+  .submit {
+    top: 41%;
+    width: 15em;
+    height: 3em;
+    background-color: black;
+    color: white;
+
+    cursor: pointer;
+  }
 }
 
 .middle {
