@@ -62,11 +62,29 @@ section .container {
 }
 
 section .container .item {
-  width: 23%;
-  padding-bottom: 32%;
-  margin-bottom: 2%;
+  width: 24%;
   position: relative;
   border: 5px solid black;
+  margin-bottom: 2rem;
+}
+
+section .container .item img {
+  max-width: 100%;
+  height: auto;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+section .container .item h1 {
+  text-align: center;
+  font-size: 28px;
+}
+
+section .container .item p {
+  text-align: center;
+  font-size: 18px;
 }
 
 * {
