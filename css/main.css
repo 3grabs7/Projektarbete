@@ -71,7 +71,6 @@ section .container {
 section .container .item {
   width: 22%;
   height: 500px;
-  position: relative;
   border: 5px solid black;
   margin-bottom: 2rem;
   padding: 1rem;
@@ -85,6 +84,9 @@ section .container .item img {
   margin-left: auto;
   margin-right: auto;
   display: block;
+  background-color: #651868;
+  border-top: 12px solid #651868;
+  border-bottom: 16px solid #651868;
 }
 section .container .item hr {
   width: 60%;
