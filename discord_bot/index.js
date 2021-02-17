@@ -9,6 +9,7 @@ client.on("ready", () => {
   console.log("Connected as " + client.user.tag);
 });
 
+// GIF Command
 client.on("message", async (msg) => {
   let commands = msg.content.split(' ');
   let prefix = commands[0];
@@ -29,14 +30,19 @@ client.on("message", async (msg) => {
   })
 })
 
+// Create meme command
 client.on("message", async (msg) => {
   let commands = msg.content.split(' ');
-  let botCommand = { prefix:commands[0], name:commands[1], top:commands[2], bottom: commands[3]};
+  let botCommand = { 
+    prefix:commands[0], 
+    name:commands[1], 
+    top:commands[2]?.split('-').join(' ') ?? '', 
+    bottom:commands[3]?.split('-').join(' ') ?? ''
+  };
 
   if(botCommand.prefix != '!meme') return;
 
   let meme = await createMeme(botCommand);
-  console.log(meme);
   msg.channel.send({
     files: [
       {
@@ -47,6 +53,7 @@ client.on("message", async (msg) => {
   })
 })
 
+// Get schedule command
 client.on("message", (msg) => {
   if (msg.content === "schema") {
     msg.reply("Här är schemat: ", {
@@ -60,6 +67,7 @@ client.on("message", (msg) => {
   }
 });
 
+// Get GIF function
 async function getGif(search_term) {
   // set the apikey and limit
   let apikey = "IUK0U580FPAU";
@@ -72,6 +80,7 @@ async function getGif(search_term) {
   return array;
 }
 
+// Create meme function
 async function createMeme(obj) {
   let memes = [];
   let response = await fetch(`https://api.imgflip.com/get_memes`);
@@ -86,10 +95,10 @@ async function createMeme(obj) {
       id: e.id
     });
   });
-
-  return addTextToMeme(memes, obj);
+  console.log(memes.filter(m => m.cmd === obj.name).map(m=>m.url));
+  return addTextToMeme(memes, obj)
 }
-
+// Update meme with command input for text -> top/bottom
 async function addTextToMeme(memes, obj) {
   let id = memes.filter(m => m.cmd === obj.name).map(m=>m.id);
   let urlRoot = 'https://api.imgflip.com/caption_image?';
@@ -99,5 +108,5 @@ async function addTextToMeme(memes, obj) {
   let response = await fetch(`${urlRoot}${cred}${query}`);
   let json = await response.json();
 
-  return json.data.url;
+  return typeof json.data.url;
 }
