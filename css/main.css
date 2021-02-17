@@ -38,8 +38,23 @@ button:hover {
   font-size: 70px;
   color: black;
 }
-.hero .search,
-.hero .submit {
+.hero__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+  position: absolute;
+  top: 30%;
+}
+.hero__buttons button {
+  min-width: 300px;
+  min-height: 50px;
+  font-size: 16px;
+}
+.hero__buttons .buttonOne {
+  margin-right: 3rem;
+}
+.hero__search {
   margin: 0;
   position: absolute;
   top: 36%;
@@ -49,30 +64,13 @@ button:hover {
   text-align: center;
   font-weight: bold;
 }
-.hero .submit {
+.hero__search .submit {
   top: 41%;
   width: 15em;
   height: 3em;
   background-color: black;
   color: white;
   cursor: pointer;
-}
-
-.middle {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 0;
-  position: absolute;
-  top: 30%;
-}
-.middle button {
-  min-width: 300px;
-  min-height: 50px;
-  font-size: 16px;
-}
-.middle .buttonOne {
-  margin-right: 3rem;
 }
 
 section .container {

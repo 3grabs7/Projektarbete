@@ -7,34 +7,39 @@
     <link rel="stylesheet" href="./css/main.css">
     <title>Prjeeject</title>
 </head>
-
-
-   
-
- <div class="hero">
-    <div class="hero__text">
-        <h2>Welcome to our bot</h2>
+<body>
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero__text">
+            <h2>Welcome to our bot</h2>
+        </div>
+        <div class="hero__buttons">
+            <button>
+                Look at memes
+            </button>
+            <a href="https://discord.com/oauth2/authorize?client_id=811338096678535218&permissions=518144&scope=bot" target="_blank">
+                <button>
+                    Add meme-bot here!
+                </button>
+            </a>
+        </div>
+        <div class="hero__search">
+            <input class="search" type="text" id="search"  placeholder="Search gif" />
+            <input class="submit" type="submit" value="Submit"/>
+        </div>
     </div>
-     <div class="middle">
-         <button class="buttonOne" style="background-color: white; color: black;">Look at memes</button>
-         <a href="https://discord.com/oauth2/authorize?client_id=811338096678535218&permissions=518144&scope=bot" target="_blank"><button>Add meme-bot here!</button></a>
-    </div>
+    <!-- placeholder for memes/gif-->
+    <section class="section"> 
+        <div class="container">
 
-  <input class="search" type="text" id="search"  placeholder="Search gif" />
-  <input class="submit" type="submit" value="Submit"/>
-</div>
-
-
-<section class="section"> 
-    <div class="container">
-
-    </div>
-</section>
-
-
+        </div>
+    </section>
+    <!-- FOOTER -->
     <footer>
         <a href="https://github.com/3grabs7/Projektarbete"> GITHUB</a>
     </footer>
 </body>
+<script src="./script/gif_api.js"></script>
+<script src="./script/meme_api.js"></script>
 <script src="./script/main.js"></script>
 </html>
