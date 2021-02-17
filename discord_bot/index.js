@@ -134,7 +134,7 @@ async function createMeme(obj) {
   let json = await response.json();
 
   Array.from(json.data.memes).forEach((e, i) => {
-    let cmd = e.name.replace(" ", "").slice(0, 3);
+    let cmd = e.name.replace(" ", "").slice(0, 3).toLowerCase();
     memes.push({
       name: e.name ?? "unknown",
       cmd: memes.includes({ cmd: cmd }) ? `${cmd}${i}` : cmd,
