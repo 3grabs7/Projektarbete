@@ -29,16 +29,6 @@ client.on("message", async (msg) => {
     ],
   });
 });
-<<<<<<< HEAD
-=======
-
-//Get website for memes command
-client.on("message", (msg) => {
-  if (msg.content === "findMemes") {
-    msg.reply("Alla memes: " + "www.blabla.se");
-  }
-});
->>>>>>> 9141ef08fb7d660255458cae7851c6fe1d0140cb
 
 // Create meme command
 client.on("message", async (msg) => {
@@ -165,9 +155,5 @@ async function addTextToMeme(memes, obj) {
   let response = await fetch(`${urlRoot}${cred}${query}`);
   let json = await response.json();
 
-<<<<<<< HEAD
   return json.data.url;
-=======
-  return typeof json.data.url;
->>>>>>> 9141ef08fb7d660255458cae7851c6fe1d0140cb
 }
