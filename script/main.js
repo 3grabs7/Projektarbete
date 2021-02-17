@@ -46,71 +46,25 @@ function loadPage(memes) {
     main.append(box);
   });
 }
-//  ------------------------- GIF API --------------
-function httpGetAsync(theUrl, callback) {
-  // create the request object
-  let xmlHttp = new XMLHttpRequest();
 
-  // set the state change callback to capture when the response comes in
-  xmlHttp.onreadystatechange = function () {
-    if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-      callback(xmlHttp.responseText);
-    }
-  };
 
-  // open as a GET call, pass in the url and set async = True
-  xmlHttp.open("GET", theUrl, true);
-
-  // call send with no params as they were passed in on the url string
-  xmlHttp.send(null);
-
-  return;
-}
-function tenorCallback_search(responsetext) {
-  // parse the json response
-  let response_objects = JSON.parse(responsetext);
-
-  top_10_gifs = response_objects["results"];
-
-  // load the GIFs -- for our example we will load the first GIFs preview size (nanogif) and share size (tinygif)
-
-  document.getElementById("preview_gif").src =
-    top_10_gifs[0]["media"][0]["nanogif"]["url"];
-
-  document.getElementById("share_gif").src =
-    top_10_gifs[0]["media"][0]["tinygif"]["url"];
-
-  return;
-}
-
-// 	IUK0U580FPAU -- key
-
-function grab_data() {
+async function grab_data(search_term) {
   // set the apikey and limit
   let apikey = "IUK0U580FPAU";
-  let lmt = 8;
-  let userInput = document.querySelector(".search");
-
-  // test search term
-  var search_term = userInput.value;
-
   // using default locale of en_US
-  var search_url =
-    "https://g.tenor.com/v1/search?q=" +
-    search_term +
-    "&key=" +
-    apikey +
-    "&limit=" +
-    lmt;
+  var search_url = `https://g.tenor.com/v1/search?q=${search_term}&key=${apikey}&limit=10`
 
-  httpGetAsync(search_url, tenorCallback_search);
+  let response = await fetch(search_url);
+  let json = await response.json();
 
-  // data will be loaded by each call's callback
-  return;
+  let array = json.results.map(r => r.media).map(a=>a[0]).map(g=>g.gif.url);
+  console.log(array);
+  return array;
 }
 
 const gifBtn = document.querySelector(".submit");
-
 gifBtn.addEventListener("click", () => {
+  let userInput = document.querySelector(".search");
+  var search_term = userInput.value;
   grab_data();
 });
