@@ -1,0 +1,3 @@
+.gitignore
+ discord_bot/.env
+discord_bot/.env
