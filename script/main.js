@@ -1,7 +1,8 @@
 const lookMemes = document.querySelector(".buttonOne");
 
 lookMemes.addEventListener("click", () => {
-  return gifFetch();
+  clearContainer();
+  gifFetch();
 });
 
 async function gifFetch() {
@@ -63,8 +64,27 @@ async function grab_data(search_term) {
 }
 
 const gifBtn = document.querySelector(".submit");
-gifBtn.addEventListener("click", () => {
+gifBtn.addEventListener("click", async () => { 
+  clearContainer();
   let userInput = document.querySelector(".search");
   var search_term = userInput.value;
-  grab_data();
+  let gifs = await grab_data(search_term);
+  console.log(gifs);
+  let main = document.querySelector(".container");
+  gifs.forEach(e => {
+    let box = document.createElement("div");
+    box.className = "item";
+
+    let img = document.createElement("img");
+    img.src = e;
+    box.append(img);
+
+    main.append(box);
+  })
 });
+
+function clearContainer() {
+  Array.from(
+    document.querySelector(".container").childNodes
+  ).forEach((e) => e.remove());
+}

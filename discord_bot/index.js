@@ -46,6 +46,19 @@ client.on("message", async (msg) => {
   })
 })
 
+client.on("message", (msg) => {
+  if (msg.content === "schema") {
+    msg.reply("Här är schemat: ", {
+      files: [
+        {
+          attachment: "https://i.imgur.com/IRZLFSE.png",
+          name: "file.png",
+        },
+      ],
+    });
+  }
+});
+
 async function getGif(search_term) {
   // set the apikey and limit
   let apikey = "IUK0U580FPAU";
