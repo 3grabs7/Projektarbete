@@ -1,6 +1,5 @@
 const fetch = require("node-fetch");
 const Discord = require("discord.js");
-
 // Create meme command
 module.exports = async (msg) => {
   let commands = msg.content.split(" ");
@@ -31,7 +30,7 @@ async function createMeme(obj) {
   let json = await response.json();
 
   Array.from(json.data.memes).forEach((e, i) => {
-    let cmd = e.name.replace(" ", "").slice(0, 3).toLowerCase();
+    let cmd = e.name.replace(" ", "").slice(0, 3);
     memes.push({
       name: e.name ?? "unknown",
       cmd: memes.includes({ cmd: cmd }) ? `${cmd}${i}` : cmd,
