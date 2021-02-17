@@ -13,13 +13,11 @@ client.on("message", (msg) => {
   if (msg.content === "ping") {
     msg.channel.send("pong");
   }
-});
+  if (msg.content === "björn") {
+    msg.channel.send("<3 <3 <3 <3 <3 <3 <3");
+  }
 
-client.on("message", (msg) => {
-    if (msg.content === "björn") {
-      msg.channel.send("<3 <3 <3 <3 <3 <3 <3");
-    }
-  });
+});
 
 client.on("message", (message) => {
     const prefix = 'gif';
