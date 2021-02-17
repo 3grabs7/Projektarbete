@@ -31,11 +31,12 @@ client.on("message", async (msg) => {
 
 client.on("message", async (msg) => {
   let commands = msg.content.split(' ');
-  let botCommand = { prefix:commands[0], name:commands[1], top:commands[2], bottom: commands[3] };
+  let botCommand = { prefix:commands[0], name:commands[1], top:commands[2], bottom: commands[3]};
 
   if(botCommand.prefix != '!meme') return;
 
   let meme = await createMeme(botCommand);
+  console.log(meme);
   msg.channel.send({
     files: [
       {
