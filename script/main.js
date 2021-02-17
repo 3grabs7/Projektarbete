@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   memeFetch();
 });
 // Event listener for meme button
-document.querySelector(".buttonOne").addEventListener("click", () => {
+document.querySelector("#memebutton").addEventListener("click", () => {
   clearContainer();
   memeFetch();
 });
@@ -25,6 +25,7 @@ document.querySelector(".submit").addEventListener("click", async () => {
     main.append(box);
   });
 });
+// If enter -> submit
 document.querySelector("#search").addEventListener("keydown", (e) => {
   if (e.keyCode === 13) {
     document.querySelector(".submit").click();

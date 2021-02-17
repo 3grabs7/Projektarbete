@@ -4,8 +4,8 @@ footer {
 
 button {
   border-radius: 50px 50px 50px 50px;
-  height: 40px;
-  width: 200px;
+  height: 60px;
+  width: 320px;
   background-color: #1a1a1a;
   color: white;
   font-size: 700;
@@ -23,6 +23,10 @@ button:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -30,12 +34,13 @@ button:hover {
   width: 100%;
 }
 .hero__text {
-  margin-top: 12rem;
-  font-size: 28px;
+  margin-top: 10rem;
+  margin-bottom: 2rem;
   text-align: center;
 }
 .hero__text h2 {
-  font-size: 70px;
+  font-size: 90px;
+  letter-spacing: -2px;
   color: black;
 }
 .hero__buttons {
@@ -43,33 +48,52 @@ button:hover {
   display: -ms-flexbox;
   display: flex;
   margin: 0;
-  position: absolute;
-  top: 30%;
-}
-.hero__buttons button {
-  min-width: 300px;
-  min-height: 50px;
-  font-size: 16px;
-}
-.hero__buttons .buttonOne {
-  margin-right: 3rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .hero__search {
   margin: 0;
-  position: absolute;
-  top: 36%;
-  width: 38rem;
-  height: 3rem;
+  width: 40%;
+  height: 100%;
   border-radius: 20px;
   text-align: center;
   font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+.hero__search .search {
+  margin-top: 20px;
+  border-radius: 20px;
+  border: 3px solid black;
+  text-align: center;
+  height: 30px;
+}
+.hero__search .search:focus {
+  outline: none;
 }
 .hero__search .submit {
-  top: 41%;
-  width: 15em;
-  height: 3em;
+  margin: 20px auto;
+  width: 50%;
+  height: 40px;
+  border-radius: 20px;
   background-color: black;
   color: white;
+  cursor: pointer;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+.hero__search .submit:hover {
+  opacity: 90%;
+  -webkit-box-shadow: 0 0 30px rgba(33, 33, 33, 0.2);
+          box-shadow: 0 0 30px rgba(33, 33, 33, 0.2);
   cursor: pointer;
 }
 
