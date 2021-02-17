@@ -108,5 +108,5 @@ async function addTextToMeme(memes, obj) {
   let response = await fetch(`${urlRoot}${cred}${query}`);
   let json = await response.json();
 
-  return typeof json.data.url;
+  return json.data.url;
 }
