@@ -9,7 +9,7 @@ async function memeFetch() {
     let cmd = e.name.replace(" ", "").slice(0, 3);
     memes.push({
       name: e.name ?? "unknown",
-      cmd: memes.includes({ cmd: cmd }) ? `${cmd}${i}` : cmd,
+      cmd: memes.filter((m) => m.cmd === cmd).length > 0 ? `${cmd}${i}` : cmd,
       url: e.url,
     });
   });
