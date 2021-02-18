@@ -2,33 +2,27 @@ const fetch = require("node-fetch");
 const Discord = require("discord.js");
 
 // GIF Command
-module.exports = async (msg) => {
-  let commands = msg.content.split(" ");
-  let prefix = commands[0];
-  let searchTerm = commands[1];
-
-  if (prefix != "!gif") return;
+module.exports = async (msg, args) => {
+  let searchTerm = args[0];
 
   let results = await getGif(searchTerm);
-  let index = Math.floor(Math.random() * results.length);
+  let index = 0;
+  if (args[1] != undefined) {
+    if (args[1] - 1 >= 0 && args[1] <= results.length) {
+      index = args[1] - 1;
+    } else {
+      index = 0;
+    }
+  } else {
+    index = Math.floor(Math.random() * results.length);
+  }
   let randomGif = results[index];
-  msg.channel.send({
-    files: [
-      {
-        attachment: randomGif,
-        name: "file.gif",
-      },
-    ],
-  });
+  msg.channel.send(randomGif);
 };
 
-// Get GIF function
 async function getGif(search_term) {
-  // set the apikey and limit
   let apikey = "IUK0U580FPAU";
-  // using default locale of en_US
   var search_url = `https://g.tenor.com/v1/search?q=${search_term}&key=${apikey}&limit=10`;
-
   let response = await fetch(search_url);
   let json = await response.json();
   let array = json.results
