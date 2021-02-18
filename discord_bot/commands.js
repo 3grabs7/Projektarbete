@@ -4,7 +4,7 @@ const meme = require('./commands/meme');
 const gif = require('./commands/gif');
 const help = require('./commands/help');
 const gamble = require('./commands/gamble');
-const createMeme = require('./commands/editImg');
+const newmeme = require('./commands/editImg');
 
 const commands = {
 	schedule,
@@ -13,7 +13,7 @@ const commands = {
 	gif,
 	help,
 	gamble,
-	createMeme,
+	newmeme,
 };
 
 module.exports = (msg) => {
