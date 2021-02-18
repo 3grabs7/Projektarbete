@@ -4,6 +4,6 @@ module.exports = function (msg, args) {
 	let bet = args[1];
 
 	msg.channel.send(
-		`<@!${user2}>!\n**${user1.username.toUpperCase()}** wants to get some gambling going.The bet is **${bet}**.\nWill you **!accept** or **!decline** ?`
+		`<@!${user2}>!\n**${user1.username.toUpperCase()}** wants to get some gambling going.The bet is **${bet}**.\n - Will you **!accept** or **!decline** ?`
 	);
 };
