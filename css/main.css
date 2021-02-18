@@ -181,8 +181,6 @@ section .container .item p {
   height: 200px;
   width: 200px;
   position: absolute;
-  top: 0;
-  left: 0;
   opacity: 0;
   cursor: pointer;
 }
@@ -191,6 +189,73 @@ section .container .item p {
   color: rgba(29, 103, 240, 0.534);
 }
 
+.editor {
+  background-color: #333;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 80vh;
+  width: 100%;
+}
+.editor__navbar {
+  background-color: olive;
+}
+.editor__navbar ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.editor__navbar ul li {
+  width: 10%;
+}
+.editor__container {
+  background-color: darkslategray;
+  height: 85%;
+  width: 95%;
+  margin: auto;
+}
+.editor__container__canvas {
+  background-color: gray;
+}
+
+@-webkit-keyframes movein {
+  from {
+    top: -100px;
+  }
+  to {
+    top: 0;
+  }
+}
+
+@keyframes movein {
+  from {
+    top: -100px;
+  }
+  to {
+    top: 0;
+  }
+}
+@-webkit-keyframes moveout {
+  from {
+    top: 0px;
+  }
+  to {
+    top: -100;
+  }
+}
+@keyframes moveout {
+  from {
+    top: 0px;
+  }
+  to {
+    top: -100;
+  }
+}
 * {
   margin: 0;
   padding: 0;
