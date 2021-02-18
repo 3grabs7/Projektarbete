@@ -1,0 +1,48 @@
+
+.editor {
+    background-color: #333;
+    display: none;
+    flex-direction: column;
+    height: 88vh;
+    width: 100%;
+
+    &__navbar {
+        background-color: olive;
+        ul {
+            display: flex;
+            justify-content: center;
+            li {
+                width: 10%;
+            }
+        }
+    }
+    &__container {
+        background-color: darkslategray;
+        height: 85%;
+        width: 95%;
+        margin: auto;
+
+        &__canvas {
+            background-color: gray;
+        }
+
+    }
+}
+
+@keyframes movein {
+    from{
+        top:-100px;
+    }
+    to {
+        top:0;
+    }
+}
+
+@keyframes moveout {
+    from{
+        top:0px;
+    }
+    to {
+        top:-100;
+    }
+}
