@@ -1,39 +1,43 @@
 // Show memes on page loaded
-document.addEventListener("DOMContentLoaded", () => {
-  memeFetch();
+document.addEventListener('DOMContentLoaded', () => {
+	memeFetch();
 });
 // Event listener for meme button
-document.querySelector("#memebutton").addEventListener("click", () => {
-  clearContainer();
-  memeFetch();
+document.querySelector('#memebutton').addEventListener('click', () => {
+	clearContainer();
+	memeFetch();
 });
 // Event listener for gif search button
-document.querySelector(".submit").addEventListener("click", async () => {
-  clearContainer();
-  let userInput = document.querySelector(".search");
-  var search_term = userInput.value;
-  let gifs = await getGif(search_term);
-  let main = document.querySelector(".container");
-  gifs.forEach((e) => {
-    let box = document.createElement("div");
-    box.className = "item";
+document.querySelector('.submit').addEventListener('click', async () => {
+	clearContainer();
+	let userInput = document.querySelector('.search');
+	var search_term = userInput.value;
+	let gifs = await getGif(search_term);
+	let main = document.querySelector('.container');
+	gifs.forEach((e, i) => {
+		let box = document.createElement('div');
+		box.className = 'item';
 
-    let img = document.createElement("img");
-    img.src = e;
-    box.append(img);
+		let img = document.createElement('img');
+		img.src = e;
+		box.append(img);
 
-    main.append(box);
-  });
+		let number = document.createElement('h1');
+		number.innerHTML = i + 1;
+		box.append(number);
+
+		main.append(box);
+	});
 });
 // If enter -> submit
-document.querySelector("#search").addEventListener("keydown", (e) => {
-  if (e.keyCode === 13) {
-    document.querySelector(".submit").click();
-  }
+document.querySelector('#search').addEventListener('keydown', (e) => {
+	if (e.keyCode === 13) {
+		document.querySelector('.submit').click();
+	}
 });
 
 function clearContainer() {
-  Array.from(document.querySelector(".container").childNodes).forEach((e) =>
-    e.remove()
-  );
+	Array.from(document.querySelector('.container').childNodes).forEach((e) =>
+		e.remove()
+	);
 }
