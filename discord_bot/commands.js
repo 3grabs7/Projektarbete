@@ -2,14 +2,14 @@ const Discord = require("discord.js");
 
 const schedule = require("./commands/schedule");
 const weblink = require("./commands/weblink");
-// const meme = require("./commands/creatememe.js");
+const meme = require("./commands/meme");
 const gif = require("./commands/gif");
 const help = require("./commands/help");
 
 const commands = {
   schedule,
   weblink,
-  createMeme: function (msg, args) {},
+  meme,
   gif,
   help,
 };
