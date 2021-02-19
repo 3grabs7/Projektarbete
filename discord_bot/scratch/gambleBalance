@@ -4,12 +4,12 @@
 		{
 			"name": "Robin",
 			"id": "748981455387885648",
-			"balance": "100"
+			"balance": 1000
 		},
 		{
 			"name": "Chris",
 			"id": "602761940799848448",
-			"balance": "500"
+			"balance": 500
 		}
 	]
 }

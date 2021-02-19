@@ -4,16 +4,16 @@ const fetch = require('node-fetch');
 const client = new Discord.Client();
 client.login(process.env.BOTTOKEN);
 
+//* Check local storage
 if (typeof localStorage === 'undefined' || localStorage === null) {
 	var LocalStorage = require('node-localstorage').LocalStorage;
 	localStorage = new LocalStorage('./scratch');
+	console.log('Connected to local storage');
 }
-//* syntax for adding to localstorage
-//* localStorage.setItem('myFirstKey', 'const dunder = { jupp: 123, nopp:420 }');
+//* syntax for adding to localstorage -> localStorage.setItem('myFirstKey', 'const dunder = { jupp: 123, nopp:420 }');
 
 var http = require('http');
 var qs = require('querystring');
-
 var serverPort = 8124;
 http
 	.createServer(function (request, response) {
@@ -37,5 +37,6 @@ function readyDiscord() {
 	console.log('Server running at localhost:' + serverPort);
 }
 
+//* Forward commands
 const commandHandler = require('./commands');
 client.on('message', commandHandler);

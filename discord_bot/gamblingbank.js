@@ -3,8 +3,8 @@ module.exports = () => {
 		console.log(`Value : ${value}\nOld : ${old}\nURL : ${url}`);
 	});
 	var balances = JSON.parse(localStorage.getItem('gambleBalance'));
-	var currentBets = JSON.parse(localStorage.getItem('currentBets'));
+	var activeBets = JSON.parse(localStorage.getItem('activeBets'));
 	console.log('Bank loaded');
-	console.log(balances);
-	console.log(currentBets);
+	//console.log(balances);
+	//console.log(activeBets);
 };

@@ -178,6 +178,7 @@ button:hover {
 .arrowcontainer__icon:hover {
   background-position: 0 -100%;
   color: rgba(29, 103, 240, 0.534);
+  cursor: pointer;
 }
 
 .editor {
