@@ -1,10 +1,6 @@
 const fetch = require('node-fetch');
 
 module.exports = async (msg, args) => {
-	let meme = await createMeme(args);
-	msg.channel.send(meme);
-};
-async function createMeme(args) {
 	let memes = [];
 	let response = await fetch(`https://api.imgflip.com/get_memes`);
 	let json = await response.json();
@@ -18,9 +14,9 @@ async function createMeme(args) {
 			id: e.id,
 		});
 	});
-
-	return addTextToMeme(memes, args);
-}
+	let meme = await addTextToMeme(memes, args);
+	msg.channel.send(meme);
+};
 
 async function addTextToMeme(memes, args) {
 	let urlRoot = 'https://api.imgflip.com/caption_image?';
