@@ -1,22 +1,19 @@
-.wrapper {
+.arrowcontainer {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  .file-upload {
+  &__icon {
     height: 100px;
     width: 150px;
     margin: 3px auto;
-    border-radius: 70px;
-    position: relative;
+    border-radius: 70px;  
     display: flex;
     justify-content: center;
-    align-items: center;
-
-    transform: rotate(180deg);
+    color: #ffffff;
+    font-size: 100px;
     border: 2px solid #ffffff;
-    overflow: hidden;
     background-image: linear-gradient(
       to bottom,
       $primary-color,
@@ -24,21 +21,11 @@
       #ffffff 50%
     );
     background-size: 100% 200%;
+    transform: rotate(180deg);
     transition: all 1s;
-    color: #ffffff;
-    font-size: 100px;
-
-    input[type="file"] {
-      height: 200px;
-      width: 200px;
-      position: absolute;
-      opacity: 0;
-      cursor: pointer;
-    }
 
     &:hover {
       background-position: 0 -100%;
-
       color: $primary-color;
     }
   }

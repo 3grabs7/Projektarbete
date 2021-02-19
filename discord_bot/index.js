@@ -26,9 +26,11 @@ http
 	})
 	.listen(serverPort);
 
+const gamblingBank = require('./gamblingbank');
 // Bot is ready
 client.on('ready', readyDiscord);
 function readyDiscord() {
+	gamblingBank();
 	console.log('Connected as ' + client.user.tag);
 	console.log('Server running at localhost:' + serverPort);
 	console.log(localStorage.getItem('myFirstKey'));

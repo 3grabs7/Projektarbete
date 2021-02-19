@@ -11,23 +11,17 @@ document.querySelector('#openeditor').addEventListener('click', (e) => {
 	}
 });
 
-document
-	.getElementById('addimg')
-	.addEventListener('click', () => inputClick('inputimg'));
-
-document.getElementById('saveimg').addEventListener('click', saveImg);
-
-document.getElementById('resetimg').addEventListener('click', resetImg);
-
-function inputClick(clickId) {
-	var ele = document.getElementById(clickId);
-	if (ele && document.createEvent) {
-		var evt = document.createEvent('MouseEvents');
-		evt.initEvent('click', true, false);
-		ele.dispatchEvent(evt);
+// ADD IMG
+document.getElementById('addimg').addEventListener('click', () => {
+	var input = document.getElementById('inputimg');
+	if (input && document.createEvent) {
+		var event = document.createEvent('MouseEvents');
+		event.initEvent('click', true, false);
+		input.dispatchEvent(event);
 	}
-}
+});
 
+// Draw img to canvas
 document.getElementById('inputimg').addEventListener(
 	'change',
 	(e) => {
@@ -44,7 +38,11 @@ document.getElementById('inputimg').addEventListener(
 	false
 );
 
-function addImg() {}
+// SAVE IMG
+document.getElementById('saveimg').addEventListener('click', saveImg);
+
+// RESET IMG
+document.getElementById('resetimg').addEventListener('click', resetImg);
 
 function saveImg() {}
 function resetImg() {}

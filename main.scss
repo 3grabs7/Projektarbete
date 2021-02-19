@@ -1,5 +1,5 @@
 @import "variables", "footer", "global", "hero",
-  "section", "upload", "editor";
+  "maincontainer", "upload", "editor";
 
 * {
   margin: 0;
@@ -9,28 +9,4 @@
 body {
   background-color: $primary-color;
   color: white;
-}
-
-.maincontainer {
-  margin: 200px auto;
-  height: 50vh;
-  background-color: $primary-color-dark;
-  display: flex;
-
-  &__head {
-    margin: 0 auto;
-    text-align: center;
-
-    h1 {
-      font-size: 60px;
-    }
-    p {
-      font-size: 24px;
-    }
-    hr {
-      border: 1px solid $accent-color;
-      width: 80%;
-      margin: 0 auto;
-    }
-  }
 }

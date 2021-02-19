@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/main.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <title>Prjeeject</title>
+    <title>MEWEdR£m</title>
 </head>
 <body>
     <!-- Editor -->
@@ -14,8 +14,7 @@
             <ul>
                 <li>
                     <p id="addimg">ADD IMG</p> 
-                    <input id="inputimg" type="file" 
-                            accept="image/jpeg, image/jpg, image/png" />
+                    <input id="inputimg" type="file" accept="image/jpeg, image/jpg, image/png" />
                 </li>
                 <li>
                     <p id="saveimg">SAVE IMG</p> 
@@ -26,14 +25,12 @@
             </ul>
         </div>
         <div class="editor__container">
-            <canvas class="editor__container__canvas">
-
-            </canvas>
+            <canvas class="editor__container__canvas"></canvas>
         </div>
     </div>
     <!-- Open Editor Arrow -->
-    <div class="wrapper">
-        <div class="file-upload" id="openeditor">
+    <div class="arrowcontainer">
+        <div class="arrowcontainer__icon" id="openeditor">
           <i class="fa fa-arrow-up"></i>
         </div>
       </div>
@@ -57,12 +54,11 @@
             <input class="submit" type="submit" value="Submit"/>
         </div>
     </div>
-    <!-- placeholder for memes/gif-->
-    <section class="section"> 
-        <div class="container">
-
+    <!-- Maincontainer for Memes/GIFs -->
+    <div class="maincontainer"> 
+        <div class="maincontainer__results">
         </div>
-    </section>
+    </div>
     <!-- FOOTER -->
     <footer>
         <a href="https://github.com/3grabs7/Projektarbete"> GITHUB</a>
@@ -70,7 +66,6 @@
     </footer>
 </body>
 <script src="./script/editor.js"></script>
-<!-- <script src="./script/editImg.js"></script> -->
 <script src="./script/upload.js"></script>
 <script src="./script/gif_api.js"></script>
 <script src="./script/meme_api.js"></script>

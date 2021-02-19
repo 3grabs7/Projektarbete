@@ -1,6 +1,4 @@
-// Get memes from API
-async function memeFetch() {
-	// http://alpha-meme-maker.herokuapp.com/:page
+async function fetchMemes() {
 	let memes = [];
 	let response = await fetch(`https://api.imgflip.com/get_memes`);
 	let json = await response.json();
@@ -13,15 +11,15 @@ async function memeFetch() {
 			url: e.url,
 		});
 	});
-	loadPage(memes);
+	loadMemesToPage(memes);
 }
-// Add loaded memes to page
-function loadPage(memes) {
-	let main = document.querySelector('.container');
 
+function loadMemesToPage(memes) {
+	clearContainer();
+	let main = document.querySelector('.maincontainer__results');
 	memes.forEach((e) => {
 		let box = document.createElement('div');
-		box.className = 'item';
+		box.className = 'maincontainer__results__item';
 
 		let img = document.createElement('img');
 		img.src = e.url;

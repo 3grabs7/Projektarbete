@@ -1,34 +1,11 @@
-// Show memes on page loaded
+// Page load
 document.addEventListener('DOMContentLoaded', () => {
-	memeFetch();
+	fetchMemes();
 });
-// Event listener for meme button
-document.querySelector('#memebutton').addEventListener('click', () => {
-	clearContainer();
-	memeFetch();
-});
-// Event listener for gif search button
-document.querySelector('.submit').addEventListener('click', async () => {
-	clearContainer();
-	let userInput = document.querySelector('.search');
-	var search_term = userInput.value;
-	let gifs = await getGif(search_term);
-	let main = document.querySelector('.container');
-	gifs.forEach((e, i) => {
-		let box = document.createElement('div');
-		box.className = 'item';
 
-		let img = document.createElement('img');
-		img.src = e;
-		box.append(img);
+document.querySelector('#memebutton').addEventListener('click', fetchMemes);
 
-		let number = document.createElement('h1');
-		number.innerHTML = i + 1;
-		box.append(number);
-
-		main.append(box);
-	});
-});
+document.querySelector('.submit').addEventListener('click', fetchGifs);
 // If enter -> submit
 document.querySelector('#search').addEventListener('keydown', (e) => {
 	if (e.keyCode === 13) {
@@ -37,9 +14,9 @@ document.querySelector('#search').addEventListener('keydown', (e) => {
 });
 
 function clearContainer() {
-	Array.from(document.querySelector('.container').childNodes).forEach((e) =>
-		e.remove()
-	);
+	Array.from(
+		document.querySelector('.maincontainer__results').childNodes
+	).forEach((e) => e.remove());
 }
 
 document.querySelector('#server').addEventListener('click', async () => {

@@ -1,12 +1,12 @@
-section {
-  .container {
+.maincontainer {
+  &__results {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 3rem;
     border-radius: 1px solid black;
 
-    .item {
+    &__item {
       width: 11%;
       height: 250px;
       margin-bottom: 2rem;
