@@ -37,28 +37,17 @@
             height: 90%;
             width: 90%;
             margin: 2% 5%;
-            border: 1px solid $accent-color;
-            
-            
+            border: 1px solid $accent-color;    
         }
-
     }
 }
 
 @keyframes movein {
-    from{
-        top:-100px;
-    }
-    to {
-        top:0;
-    }
+    from{ top:-100px; }
+    to { top:0; }
 }
 
 @keyframes moveout {
-    from{
-        top:0px;
-    }
-    to {
-        top:-100;
-    }
+    from{ top:0px; }
+    to { top:-100; }
 }
