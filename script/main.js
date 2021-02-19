@@ -1,4 +1,4 @@
-// Page load
+//* Page load
 document.addEventListener('DOMContentLoaded', () => {
 	fetchMemes();
 });
@@ -18,7 +18,11 @@ function clearContainer() {
 		document.querySelector('.maincontainer__results').childNodes
 	).forEach((e) => e.remove());
 }
-
+/*
+ * -----------------------------
+ * TEST CODE FOR POSTING TO NODE *
+ * -----------------------------
+ */
 document.querySelector('#server').addEventListener('click', async () => {
 	let post = await fetch('http://localhost:8124/', {
 		method: 'POST',
