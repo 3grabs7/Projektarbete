@@ -227,6 +227,9 @@ section .container .item p {
   cursor: pointer;
   color: #40bee4;
 }
+.editor__navbar ul li input {
+  display: none;
+}
 .editor__container {
   background-color: rgba(29, 103, 240, 0.534);
   height: 85%;
