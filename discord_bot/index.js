@@ -8,8 +8,8 @@ if (typeof localStorage === 'undefined' || localStorage === null) {
 	var LocalStorage = require('node-localstorage').LocalStorage;
 	localStorage = new LocalStorage('./scratch');
 }
-// syntax for adding to localstorage
-// localStorage.setItem('myFirstKey', 'const dunder = { jupp: 123, nopp:420 }');
+//* syntax for adding to localstorage
+//* localStorage.setItem('myFirstKey', 'const dunder = { jupp: 123, nopp:420 }');
 
 var http = require('http');
 var qs = require('querystring');
@@ -26,14 +26,15 @@ http
 	})
 	.listen(serverPort);
 
+//* Connect bank for gambling command
 const gamblingBank = require('./gamblingbank');
-// Bot is ready
+
+//* Bot is ready
 client.on('ready', readyDiscord);
 function readyDiscord() {
 	gamblingBank();
 	console.log('Connected as ' + client.user.tag);
 	console.log('Server running at localhost:' + serverPort);
-	console.log(localStorage.getItem('myFirstKey'));
 }
 
 const commandHandler = require('./commands');
