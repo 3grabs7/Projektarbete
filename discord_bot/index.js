@@ -26,13 +26,11 @@ http
 	})
 	.listen(serverPort);
 
-console.log('Server running at localhost:' + serverPort);
-
 // Bot is ready
 client.on('ready', readyDiscord);
-
 function readyDiscord() {
 	console.log('Connected as ' + client.user.tag);
+	console.log('Server running at localhost:' + serverPort);
 	console.log(localStorage.getItem('myFirstKey'));
 }
 

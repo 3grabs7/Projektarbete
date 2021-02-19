@@ -1,29 +1,45 @@
 
 .editor {
-    background-color: #333;
-    display: none;
+    background-color: $primary-color;
+    display: flex;
     flex-direction: column;
     height: 88vh;
     width: 100%;
 
     &__navbar {
-        background-color: olive;
+        background-color: $primary-color-dark;
         ul {
             display: flex;
             justify-content: center;
+            list-style: none;
             li {
                 width: 10%;
+                p {
+                    width: 40%;
+                    text-align: center;
+                    &:hover {
+                        cursor: pointer ;
+                        color: $accent-color;
+                    }
+                }
+
             }
         }
     }
     &__container {
-        background-color: darkslategray;
+        background-color: $primary-color;
         height: 85%;
         width: 95%;
         margin: auto;
 
         &__canvas {
-            background-color: gray;
+            background-color: white;
+            height: 90%;
+            width: 90%;
+            margin: 2% 5%;
+            border: 1px solid $accent-color;
+            
+            
         }
 
     }

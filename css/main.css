@@ -193,8 +193,10 @@ section .container .item p {
 }
 
 .editor {
-  background-color: #333;
-  display: none;
+  background-color: rgba(29, 103, 240, 0.534);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -203,7 +205,7 @@ section .container .item p {
   width: 100%;
 }
 .editor__navbar {
-  background-color: olive;
+  background-color: rgba(15, 53, 124, 0.74);
 }
 .editor__navbar ul {
   display: -webkit-box;
@@ -212,18 +214,31 @@ section .container .item p {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  list-style: none;
 }
 .editor__navbar ul li {
   width: 10%;
 }
+.editor__navbar ul li p {
+  width: 40%;
+  text-align: center;
+}
+.editor__navbar ul li p:hover {
+  cursor: pointer;
+  color: #40bee4;
+}
 .editor__container {
-  background-color: darkslategray;
+  background-color: rgba(29, 103, 240, 0.534);
   height: 85%;
   width: 95%;
   margin: auto;
 }
 .editor__container__canvas {
-  background-color: gray;
+  background-color: white;
+  height: 90%;
+  width: 90%;
+  margin: 2% 5%;
+  border: 1px solid #40bee4;
 }
 
 @-webkit-keyframes movein {
