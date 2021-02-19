@@ -1,7 +1,7 @@
 // Open Editor
 document.querySelector('#openeditor').addEventListener('click', (e) => {
 	let editor = document.querySelector('.editor');
-	let arrow = document.querySelector('.file-upload');
+	let arrow = document.querySelector('.arrowcontainer__icon');
 	if (editor.style.display === 'flex') {
 		editor.style.display = 'none';
 		arrow.style.transform = 'rotate(180deg)';
