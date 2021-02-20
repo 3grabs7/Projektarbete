@@ -14,18 +14,29 @@ module.exports = function (msg, args) {
 			'https://dazedimg-dazedgroup.netdna-ssl.com/495/azure/dazed-prod/1210/0/1210368.jpg'
 		)
 		.addFields(
-			{ name: '!weblink', value: 'Visit out page, please', inline: false },
+			{ name: '!weblink', value: 'Visit our page, please.', inline: false },
 			{
 				name: '!gif <Search Term> (optional)<Number>',
-				value: 'Get some GIF, get numbers at website',
+				value: 'Get your GIFs, check out website for those numbers.',
 				inline: false,
 			},
 			{
 				name: '!meme <Meme Code> <Text 1> <Text 2>',
-				value: 'Make your meme, get codes at website',
+				value: 'Make your dreams memes, check out website for codes.',
 				inline: false,
 			},
-			{ name: '!schedule', value: 'No escuses', inline: false }
+			{ name: '!schedule', value: 'Never late. No escuses.', inline: false },
+			{
+				name: '!gamble <User> <Bet amount>',
+				value:
+					'Get likes -> Get coins -> Addict. !gamble accept/decline to respond.',
+				inline: false,
+			},
+			{
+				name: '!hi',
+				value: 'Socially awkward? I got you.',
+				inline: false,
+			}
 		)
 		// .setImage(
 		//   "https://dazedimg-dazedgroup.netdna-ssl.com/495/azure/dazed-prod/1210/0/1210368.jpg"
