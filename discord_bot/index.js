@@ -13,12 +13,12 @@ if (typeof localStorage === 'undefined' || localStorage === null) {
 //* syntax for adding to localstorage -> localStorage.setItem('myFirstKey', 'const dunder = { jupp: 123, nopp:420 }');
 
 //* Connect bank for gambling command
-const gamblingBank = require('./gamblingbank');
+const gambleHub = require('./gamblehub');
 
 //* Bot is ready
 client.on('ready', readyDiscord);
 function readyDiscord() {
-	gamblingBank();
+	gambleHub();
 	console.log('Connected as ' + client.user.tag);
 	console.log('Server running at localhost:' + serverPort);
 }

@@ -23,8 +23,8 @@ module.exports = (msg) => {
 		command = command.substring(1);
 		try {
 			commands[command](msg, tokens);
-		} catch {
-			console.log('command not found');
+		} catch (err) {
+			console.log(`${err}`);
 		}
 	}
 };

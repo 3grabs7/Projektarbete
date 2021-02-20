@@ -2,25 +2,24 @@ module.exports = function (msg, args) {
 	let activeBets = JSON.parse(localStorage.getItem('activeBets.json'));
 	let respondent = msg.member.user.id;
 	let challenger = activeBets.bets
-		.filter((b) => b.challenged === respondent)
+		.filter((b) => b.respondent === respondent)
 		.map((b) => b.challenger);
 
 	let isChallenged =
-		activeBets.bets.filter((b) => b.challenged === respondent).length > 0;
+		activeBets.bets.filter((b) => b.respondent === respondent).length > 0;
 
 	if (isChallenged) {
 		if (args === 'accept') {
-			msg.channel.send(
-				`<@!${respondent}>, we're not quiet there yet but good for you`
-			);
-			runBet();
+			msg.channel.send(`<@!${respondent}>, LET'$ GO!`);
+			msg.channel.send(runBet(msg, respondent, challenger));
+			scrapBet(activeBets, challenger, respondent);
 			return;
 		}
 		if (args === 'decline') {
 			msg.channel.send(
 				`<@!${challenger}>, it seems like <@!${respondent}> was really just a coward all along.`
 			);
-			scrapBet();
+			scrapBet(activeBets, challenger, respondent);
 			return;
 		}
 	}
@@ -30,8 +29,20 @@ module.exports = function (msg, args) {
 	);
 };
 
-function scrapBet() {}
-function runBet() {
-	settleBet();
+function scrapBet(activeBets, challenger, respondent) {
+	let updatedBets = activeBets.bets.filter(
+		(b) => b.challenger != challenger && b.respondent != respondent
+	);
+	localStorage.setItem(
+		'activeBets.json',
+		JSON.stringify({ bets: updatedBets })
+	);
 }
-function settleBet() {}
+
+function runBet(activeBets, challenger, respondent) {
+	settleBet();
+	return `We toss coin here`;
+}
+function settleBet() {
+	console.log('We transfer coins here');
+}
