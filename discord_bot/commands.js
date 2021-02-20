@@ -4,6 +4,7 @@ const meme = require('./commands/meme');
 const gif = require('./commands/gif');
 const help = require('./commands/help');
 const gamble = require('./commands/gamble');
+const hi = require('./commands/hi');
 const findnewmeme = require('./commands/findNewmeme');
 
 const commands = {
@@ -13,6 +14,7 @@ const commands = {
 	gif,
 	help,
 	gamble,
+	hi,
 	findnewmeme,
 };
 

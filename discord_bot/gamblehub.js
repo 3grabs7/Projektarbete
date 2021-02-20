@@ -1,3 +1,7 @@
+/*
+ * Testing event handlers, keep this code for now but probably not needed
+ * We can console log json when changes happen
+ */
 module.exports = () => {
 	localStorage.on('gambleBalance.json', function (value, old, url) {
 		console.log('********** Gamble Balance Updated **********');
