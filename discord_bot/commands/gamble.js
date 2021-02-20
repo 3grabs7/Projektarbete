@@ -1,4 +1,11 @@
+const gambleResponse = require('./gambleresponse');
+
 module.exports = function (msg, args) {
+	if (args[0] === 'accept' || args[0] === 'decline') {
+		gambleResponse(msg, args[0]);
+		return;
+	}
+
 	let user1 = msg.member.user;
 	let user2 = args[0].replace(/[^0-9]/g, '');
 	let bet = parseInt(args[1]);

@@ -1,14 +1,14 @@
 {
     "bets": [
         {
-            "challenger": "",
-            "challenged": "",
-            "bet": "0"
+            "challenger": "748981455387885648",
+            "challenged": "602761940799848448",
+            "bet": "100"
         },
         {
-            "challenger": "",
-            "challenged": "",
-            "bet": "0"
+            "challenger": "602761940799848448",
+            "challenged": "748981455387885648",
+            "bet": "100"
         }
     ]
 }

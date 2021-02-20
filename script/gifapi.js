@@ -1,4 +1,6 @@
 async function fetchGifs(search_term) {
+	let userInput = document.querySelector('.search');
+	var search_term = userInput.value;
 	let apikey = 'IUK0U580FPAU';
 	try {
 		var search_url = `https://g.tenor.com/v1/search?q=${search_term}&key=${apikey}&limit=70`;
@@ -18,8 +20,6 @@ async function fetchGifs(search_term) {
 
 async function loadGifsToPage(gifs) {
 	clearContainer();
-	let userInput = document.querySelector('.search');
-	var search_term = userInput.value;
 	let main = document.querySelector('.maincontainer__results');
 	gifs.forEach((e, i) => {
 		let box = document.createElement('div');
