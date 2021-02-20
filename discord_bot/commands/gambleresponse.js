@@ -1,9 +1,10 @@
 module.exports = function (msg, args) {
 	let activeBets = JSON.parse(localStorage.getItem('activeBets.json'));
+
 	let respondent = msg.member.user.id;
-	let challenger = activeBets.bets
-		.filter((b) => b.respondent === respondent)
-		.map((b) => b.challenger);
+	let bet = activeBets.bets.filter((b) => b.respondent === respondent);
+	let challenger = bet.challenger;
+	let betAmt = bet.bet;
 
 	let isChallenged =
 		activeBets.bets.filter((b) => b.respondent === respondent).length > 0;
@@ -11,7 +12,7 @@ module.exports = function (msg, args) {
 	if (isChallenged) {
 		if (args === 'accept') {
 			msg.channel.send(`<@!${respondent}>, LET'$ GO!`);
-			msg.channel.send(runBet(msg, respondent, challenger));
+			msg.channel.send(runBet(respondent, challenger, betAmt));
 			scrapBet(activeBets, challenger, respondent);
 			return;
 		}
@@ -29,6 +30,33 @@ module.exports = function (msg, args) {
 	);
 };
 
+function runBet(challenger, respondent, betAmt) {
+	let outcome = Math.floor(Math.random() * (100 - 1)) + 1;
+	if (outcome > 50) {
+		return `<@!${challenger}> **won!** <@!${respondent} **sucks!**> \n${settleBet(
+			challenger,
+			respondent,
+			betAmt
+		)}`;
+	}
+	return `<@!${respondent}> **won!** <@!${challenger} **sucks!**> \n${settleBet(
+		respondent,
+		challenger,
+		betAmt
+	)}`;
+}
+function settleBet(winner, loser, betAmt) {
+	let gambleBalance = JSON.parse(localStorage.getItem('gambleBalance.json'));
+	gambleBalance.users
+		.filter((user) => user.id === winner)
+		.map((user) => (user.balance += betAmt));
+	gambleBalance.users
+		.filter((user) => user.id === loser)
+		.map((user) => (user.balance -= betAmt));
+	console.log(`register transactions in ${gambleBalance}`);
+	return `<@!${winner}'s balance : **{COINS HERE}**. <@!${loser}'s balance : **{COINS HERE}**.>`;
+}
+
 function scrapBet(activeBets, challenger, respondent) {
 	let updatedBets = activeBets.bets.filter(
 		(b) => b.challenger != challenger && b.respondent != respondent
@@ -37,12 +65,4 @@ function scrapBet(activeBets, challenger, respondent) {
 		'activeBets.json',
 		JSON.stringify({ bets: updatedBets })
 	);
-}
-
-function runBet(activeBets, challenger, respondent) {
-	settleBet();
-	return `We toss coin here`;
-}
-function settleBet() {
-	console.log('We transfer coins here');
 }
