@@ -10,7 +10,6 @@ module.exports = function (msg, args) {
 	let isChallenged =
 		activeBets.bets.filter((b) => b.respondent == respondent).length > 0;
 
-	console.log(challenger);
 	if (isChallenged) {
 		if (args === 'accept') {
 			msg.channel.send(`<@!${respondent}>, LET'$ GO!`);
@@ -34,9 +33,6 @@ module.exports = function (msg, args) {
 
 function runBet(respondent, challenger, betAmt) {
 	let outcome = Math.floor(Math.random() * (100 - 1)) + 1;
-	console.log(respondent);
-	console.log(challenger);
-	console.log(betAmt);
 	if (outcome > 50) {
 		return `<@!${challenger}> **won!** <@!${respondent}> **sucks!** \n${settleBet(
 			challenger,
@@ -54,18 +50,13 @@ function settleBet(winner, loser, betAmt) {
 	let gambleBalance = JSON.parse(localStorage.getItem('gambleBalance.json'));
 	console.log(winner);
 	console.log(loser);
-	gambleBalance.users
-		.filter((user) => user.id === winner)
-		.map((b) => (b.balance += betAmt));
-	gambleBalance.users
-		.filter((user) => user.id === loser)
-		.map((b) => (b.balance -= betAmt));
+	gambleBalance.users.filter((user) => user.id === winner).balance += betAmt;
+	gambleBalance.users.filter((user) => user.id === loser).balance -= betAmt;
 	localStorage.setItem('gambleBalance.json', JSON.stringify(gambleBalance));
 	return `<@!${winner}>'s balance : **{COINS HERE}**. <@!${loser}>'s balance : **{COINS HERE}**.`;
 }
 
 function scrapBet(activeBets, challenger, respondent) {
-	return;
 	let updatedBets = activeBets.bets.filter(
 		(b) => b.challenger != challenger && b.respondent != respondent
 	);
