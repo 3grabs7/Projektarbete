@@ -33,16 +33,19 @@ button:hover {
   height: 600px;
   width: 100%;
 }
+
 .hero__text {
   margin-top: 10rem;
   margin-bottom: 2rem;
   text-align: center;
 }
+
 .hero__text h2 {
   font-size: 90px;
   letter-spacing: -2px;
   color: black;
 }
+
 .hero__buttons {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -52,6 +55,7 @@ button:hover {
       -ms-flex-pack: center;
           justify-content: center;
 }
+
 .hero__search {
   margin: 0;
   width: 40%;
@@ -69,6 +73,7 @@ button:hover {
   -ms-flex-item-align: center;
       align-self: center;
 }
+
 .hero__search .search {
   margin-top: 20px;
   border-radius: 20px;
@@ -76,9 +81,11 @@ button:hover {
   text-align: center;
   height: 30px;
 }
+
 .hero__search .search:focus {
   outline: none;
 }
+
 .hero__search .submit {
   margin: 20px auto;
   width: 50%;
@@ -88,8 +95,10 @@ button:hover {
   color: white;
   cursor: pointer;
   -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
       align-self: center;
 }
+
 .hero__search .submit:hover {
   opacity: 90%;
   -webkit-box-shadow: 0 0 30px rgba(33, 33, 33, 0.2);
@@ -108,12 +117,14 @@ button:hover {
   padding: 3rem;
   border-radius: 1px solid black;
 }
+
 .maincontainer__results__item {
   width: 11%;
   height: 250px;
   margin-bottom: 2rem;
   padding: 1rem;
 }
+
 .maincontainer__results__item img {
   width: 100%;
   height: 60%;
@@ -127,14 +138,17 @@ button:hover {
   border-top: 6px solid rgba(15, 53, 124, 0.74);
   border-bottom: 8px solid rgba(15, 53, 124, 0.74);
 }
+
 .maincontainer__results__item hr {
   width: 60%;
   margin: 7px auto;
 }
+
 .maincontainer__results__item h1 {
   text-align: center;
   font-size: 24px;
 }
+
 .maincontainer__results__item p {
   text-align: center;
   font-size: 20px;
@@ -153,6 +167,7 @@ button:hover {
       -ms-flex-pack: center;
           justify-content: center;
 }
+
 .arrowcontainer__icon {
   height: 100px;
   width: 150px;
@@ -175,6 +190,7 @@ button:hover {
   -webkit-transition: all 1s;
   transition: all 1s;
 }
+
 .arrowcontainer__icon:hover {
   background-position: 0 -100%;
   color: rgba(29, 103, 240, 0.534);
@@ -191,9 +207,11 @@ button:hover {
   height: 88vh;
   width: 100%;
 }
+
 .editor__navbar {
   background-color: rgba(15, 53, 124, 0.74);
 }
+
 .editor__navbar ul {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -203,26 +221,32 @@ button:hover {
           justify-content: center;
   list-style: none;
 }
+
 .editor__navbar ul li {
   width: 10%;
 }
+
 .editor__navbar ul li p {
   width: 40%;
   text-align: center;
 }
+
 .editor__navbar ul li p:hover {
   cursor: pointer;
   color: #40bee4;
 }
+
 .editor__navbar ul li input {
   display: none;
 }
+
 .editor__container {
   background-color: rgba(29, 103, 240, 0.534);
   height: 85%;
   width: 95%;
   margin: auto;
 }
+
 .editor__container__canvas {
   background-color: white;
   height: 90%;
@@ -248,6 +272,7 @@ button:hover {
     top: 0;
   }
 }
+
 @-webkit-keyframes moveout {
   from {
     top: 0px;
@@ -256,6 +281,7 @@ button:hover {
     top: -100;
   }
 }
+
 @keyframes moveout {
   from {
     top: 0px;
@@ -264,6 +290,7 @@ button:hover {
     top: -100;
   }
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -272,4 +299,5 @@ button:hover {
 body {
   background-color: rgba(29, 103, 240, 0.534);
   color: white;
-}/*# sourceMappingURL=main.css.map */
+}
+/*# sourceMappingURL=main.css.map */

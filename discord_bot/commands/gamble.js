@@ -59,5 +59,4 @@ function logBet(challenger, respondent, bet) {
 	});
 	localStorage.setItem('activeBets.json', JSON.stringify(activeBets));
 	console.log('Bet logged');
-	console.log(localStorage.getItem('activeBets.json'));
 }
