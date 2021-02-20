@@ -6,43 +6,58 @@ module.exports = function (msg, args) {
 		return;
 	}
 
-	let user1 = msg.member.user;
-	let user2 = args[0].replace(/[^0-9]/g, '');
+	let challenger = msg.member.user;
+	let challenged = args[0].replace(/[^0-9]/g, '');
 	let bet = parseInt(args[1]);
 
 	let userBalances = JSON.parse(localStorage.getItem('gambleBalance'));
-	user1Balance = userBalances.users
-		.filter((u) => u.id === user1.id)
+	challengerBalance = userBalances.users
+		.filter((u) => u.id === challenger.id)
 		.map((u) => u.balance);
-	user2Balance = userBalances.users
-		.filter((u) => u.id === user2)
+	challengedBalance = userBalances.users
+		.filter((u) => u.id === challenged)
 		.map((u) => u.balance);
 
-	if (hasActiveBet(user1.id)) {
-		msg.channel.send(`<@!${user1.id}>, you still have a pending bet, chill.`);
-		return;
-	}
-
-	if (bet > user1Balance) {
+	if (hasActiveBet(challenger.id)) {
 		msg.channel.send(
-			`<@!${user1.id}>, I'm afraid you're a bit short for that bet. **Current balance : ${user1Balance}**`
+			`<@!${challenger.id}>, you still have a pending bet, chill.`
 		);
 		return;
 	}
 
-	if (bet > user2Balance) {
+	if (bet > challengerBalance) {
 		msg.channel.send(
-			`<@!${user1.id}>,  <@!${user2}> can't take that bet, that dude's poooor. **Their balance : ${user2Balance}**`
+			`<@!${challenger.id}>, I'm afraid you're a bit short for that bet. **Current balance : ${challengerBalance}**`
 		);
 		return;
 	}
 
+	if (bet > challengedBalance) {
+		msg.channel.send(
+			`<@!${challenger.id}>,  <@!${challenged}> can't take that bet, that dude's poooor. **Their balance : ${challengedBalance}**`
+		);
+		return;
+	}
+
+	logBet(challenger.id, challenged, bet);
 	msg.channel.send(
-		`<@!${user2}>!\n**${user1.username.toUpperCase()}** wants to get some gambling going.The bet is **${bet}**.\n - Will you **!accept** or **!decline** ?`
+		`<@!${challenged}>!\n**${challenger.username.toUpperCase()}** wants to get some gambling going.The bet is **${bet}**.\n - Will you **!gamble accept** or **!gamble decline** ?`
 	);
 };
 
 function hasActiveBet(userId) {
 	let activeBets = JSON.parse(localStorage.getItem('activeBets'));
 	return activeBets.bets.filter((b) => b.challenger === userId).length > 0;
+}
+
+function logBet(challenger, challenged, bet) {
+	let activeBets = JSON.parse(localStorage.getItem('activeBets'));
+	activeBets.bets.push({
+		challenger: challenger,
+		challenged: challenged,
+		bet: bet,
+	});
+	localStorage.setItem('activeBets', JSON.stringify(activeBets));
+	console.log('Bet logged');
+	console.log(localStorage.getItem('activeBets'));
 }
