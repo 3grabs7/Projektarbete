@@ -7,15 +7,15 @@ module.exports = function (msg, args) {
 	}
 
 	let challenger = msg.member.user;
-	let challenged = args[0].replace(/[^0-9]/g, '');
+	let respondent = args[0].replace(/[^0-9]/g, '');
 	let bet = parseInt(args[1]);
 
-	let userBalances = JSON.parse(localStorage.getItem('gambleBalance'));
+	let userBalances = JSON.parse(localStorage.getItem('gambleBalance.json'));
 	challengerBalance = userBalances.users
 		.filter((u) => u.id === challenger.id)
 		.map((u) => u.balance);
-	challengedBalance = userBalances.users
-		.filter((u) => u.id === challenged)
+	respondentBalance = userBalances.users
+		.filter((u) => u.id === respondent)
 		.map((u) => u.balance);
 
 	if (hasActiveBet(challenger.id)) {
@@ -32,32 +32,32 @@ module.exports = function (msg, args) {
 		return;
 	}
 
-	if (bet > challengedBalance) {
+	if (bet > respondentBalance) {
 		msg.channel.send(
-			`<@!${challenger.id}>,  <@!${challenged}> can't take that bet, that dude's poooor. **Their balance : ${challengedBalance}**`
+			`<@!${challenger.id}>,  <@!${respondent}> can't take that bet, that dude's poooor. **Their balance : ${respondentBalance}**`
 		);
 		return;
 	}
 
-	logBet(challenger.id, challenged, bet);
+	logBet(challenger.id, respondent, bet);
 	msg.channel.send(
-		`<@!${challenged}>!\n**${challenger.username.toUpperCase()}** wants to get some gambling going.The bet is **${bet}**.\n - Will you **!gamble accept** or **!gamble decline** ?`
+		`<@!${respondent}>!\n**${challenger.username.toUpperCase()}** wants to get some gambling going.The bet is **${bet}**.\n - Will you **!gamble accept** or **!gamble decline** ?`
 	);
 };
 
 function hasActiveBet(userId) {
-	let activeBets = JSON.parse(localStorage.getItem('activeBets'));
+	let activeBets = JSON.parse(localStorage.getItem('activeBets.json'));
 	return activeBets.bets.filter((b) => b.challenger === userId).length > 0;
 }
 
-function logBet(challenger, challenged, bet) {
-	let activeBets = JSON.parse(localStorage.getItem('activeBets'));
+function logBet(challenger, respondent, bet) {
+	let activeBets = JSON.parse(localStorage.getItem('activeBets.json'));
 	activeBets.bets.push({
 		challenger: challenger,
-		challenged: challenged,
+		respondent: respondent,
 		bet: bet,
 	});
-	localStorage.setItem('activeBets', JSON.stringify(activeBets));
+	localStorage.setItem('activeBets.json', JSON.stringify(activeBets));
 	console.log('Bet logged');
-	console.log(localStorage.getItem('activeBets'));
+	console.log(localStorage.getItem('activeBets.json'));
 }
