@@ -3,19 +3,24 @@ const fetch = require('node-fetch');
 module.exports = async (msg, args) => {
 	let memes = [];
 	let response = await fetch(`https://api.imgflip.com/get_memes`);
-	let json = await response.json();
-
-	Array.from(json.data.memes).forEach((e, i) => {
-		let cmd = e.name.replace(' ', '').slice(0, 3);
-		memes.push({
-			name: e.name,
-			cmd: memes.filter((m) => m.cmd === cmd).length > 0 ? `${cmd}${i}` : cmd,
-			url: e.url,
-			id: e.id,
+	if (response.status === 200) {
+		let json = await response.json();
+		Array.from(json.data.memes).forEach((e, i) => {
+			let cmd = e.name.replace(' ', '').slice(0, 3);
+			memes.push({
+				name: e.name,
+				cmd: memes.filter((m) => m.cmd === cmd).length > 0 ? `${cmd}${i}` : cmd,
+				url: e.url,
+				id: e.id,
+			});
 		});
-	});
-	let meme = await addTextToMeme(memes, args);
-	msg.channel.send(meme);
+		let meme = await addTextToMeme(memes, args);
+		if (meme.length === 0) {
+			console.log('Invalid meme code entered');
+			return;
+		}
+		msg.channel.send(meme);
+	}
 };
 
 async function addTextToMeme(memes, args) {
@@ -30,10 +35,12 @@ async function addTextToMeme(memes, args) {
 	}`;
 
 	let response = await fetch(`${urlRoot}${cred}${query}`);
-	let json = await response.json();
-	try {
-		return json.data.url;
-	} catch {
+	if (response.status === 200) {
+		let json = await response.json();
+		if (json.success) {
+			return json.data.url;
+		}
 		return memes.filter((m) => m.cmd === args[0]).map((m) => m.url);
 	}
+	console.log(`Server responded with error : ${resonpse.statusText}`);
 }

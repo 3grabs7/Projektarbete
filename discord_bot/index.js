@@ -10,17 +10,11 @@ if (typeof localStorage === 'undefined' || localStorage === null) {
 	localStorage = new LocalStorage('./scratch');
 	console.log('Connected to local storage');
 }
-//* syntax for adding to localstorage -> localStorage.setItem('myFirstKey', 'const dunder = { jupp: 123, nopp:420 }');
-
-//* Connect bank for gambling command
-const gambleHub = require('./gamblehub');
 
 //* Bot is ready
 client.on('ready', readyDiscord);
 function readyDiscord() {
-	gambleHub();
 	console.log('Connected as ' + client.user.tag);
-	console.log('Server running at localhost:' + serverPort);
 }
 
 //* Forward commands
@@ -45,3 +39,4 @@ http
 		response.end();
 	})
 	.listen(serverPort);
+console.log('Server running at localhost:' + serverPort);

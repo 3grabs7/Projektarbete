@@ -23,10 +23,10 @@ module.exports = (msg) => {
 	let command = tokens.shift();
 	if (command.charAt(0) === '!') {
 		command = command.substring(1);
-		try {
+		if (commands[command] != undefined) {
 			commands[command](msg, tokens);
-		} catch (err) {
-			console.log(`${err}`);
+			return;
 		}
+		console.log('Invalid command');
 	}
 };
