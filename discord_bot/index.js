@@ -1,3 +1,5 @@
+//* Run node with server auto restart -> nodemon watch index --ext js --ignore '*.json'
+
 require('dotenv').config();
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
