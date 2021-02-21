@@ -48,12 +48,26 @@ function runBet(respondent, challenger, betAmt) {
 }
 function settleBet(winner, loser, betAmt) {
 	let gambleBalance = JSON.parse(localStorage.getItem('gambleBalance.json'));
-	console.log(winner);
-	console.log(loser);
-	gambleBalance.users.filter((user) => user.id === winner).balance += betAmt;
-	gambleBalance.users.filter((user) => user.id === loser).balance -= betAmt;
+
+	let winnerBalance =
+		gambleBalance.users.filter((user) => user.id === winner)[0]['balance'] +
+		betAmt;
+	let loserBalance =
+		gambleBalance.users.filter((user) => user.id === loser)[0]['balance'] -
+		betAmt;
+	console.log(winnerBalance);
+	console.log(loserBalance);
+	gambleBalance.users.filter((user) => user.id === winner)[0][
+		'balance'
+	] = winnerBalance;
+	gambleBalance.users.filter((user) => user.id === loser)[0][
+		'balance'
+	] = loserBalance;
+
+	console.log(gambleBalance);
+
 	localStorage.setItem('gambleBalance.json', JSON.stringify(gambleBalance));
-	return `<@!${winner}>'s balance : **{COINS HERE}**. <@!${loser}>'s balance : **{COINS HERE}**.`;
+	return `<@!${winner}>'s balance : **${winnerBalance}**. <@!${loser}>'s balance : **${loserBalance}**.`;
 }
 
 function scrapBet(activeBets, challenger, respondent) {
