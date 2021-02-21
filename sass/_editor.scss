@@ -1,7 +1,7 @@
 
 .editor {
     background-color: $primary-color;
-    display: none;
+    display: flex;
     flex-direction: column;
     height: 88vh;
     width: 100%;
@@ -9,14 +9,15 @@
     &__navbar {
         background-color: $primary-color-dark;
         ul {
+            width: 100%;
             display: flex;
-            justify-content: center;
+            justify-content:center;
             list-style: none;
+            text-align: center;
             li {
                 width: 10%;
                 p {
-                    width: 40%;
-                    text-align: center;
+                    width: 100%;
                     &:hover {
                         cursor: pointer ;
                         color: $accent-color;
@@ -24,6 +25,15 @@
                 }
                 input { display:none; }
             }
+        }
+    }
+    &__addtext {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 20px;
+        input {
+            height: 20px;
         }
     }
     &__container {

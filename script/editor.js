@@ -1,4 +1,6 @@
-// Open Editor
+let currentImg = '';
+
+//* Open Editor
 document.querySelector('#openeditor').addEventListener('click', (e) => {
 	let editor = document.querySelector('.editor');
 	let arrow = document.querySelector('.arrowcontainer__icon');
@@ -11,7 +13,7 @@ document.querySelector('#openeditor').addEventListener('click', (e) => {
 	}
 });
 
-// ADD IMG
+//* ADD IMG
 document.getElementById('addimg').addEventListener('click', () => {
 	var input = document.getElementById('inputimg');
 	if (input && document.createEvent) {
@@ -21,7 +23,7 @@ document.getElementById('addimg').addEventListener('click', () => {
 	}
 });
 
-// Draw img to canvas
+//* Draw img to canvas
 document.getElementById('inputimg').addEventListener(
 	'change',
 	(e) => {
@@ -30,7 +32,8 @@ document.getElementById('inputimg').addEventListener(
 		canvas.height = document.body.clientHeight * 0.95 * 0.9;
 		ctx = canvas.getContext('2d');
 		img = new Image();
-		img.src = URL.createObjectURL(e.target.files[0]);
+		currentImg = URL.createObjectURL(e.target.files[0]);
+		img.src = currentImg;
 		img.onload = function () {
 			ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 		};
@@ -38,11 +41,29 @@ document.getElementById('inputimg').addEventListener(
 	false
 );
 
-// SAVE IMG
+//* SAVE IMG
 document.getElementById('saveimg').addEventListener('click', saveImg);
 
-// RESET IMG
+//* RESET IMG
 document.getElementById('resetimg').addEventListener('click', resetImg);
 
-function saveImg() {}
+function saveImg() {
+	//* img.src = canvas.toDataURL();
+}
 function resetImg() {}
+
+//* ADD TEXT
+function addTextToCanvas() {
+	const inputText = document.getElementById('inputtext').value;
+	const canvas = document.querySelector('.editor__container__canvas');
+	canvas.width = document.body.clientWidth * 0.85 * 0.9; /// use integer values
+	canvas.height = document.body.clientHeight * 0.95 * 0.9;
+	let ctx = canvas.getContext('2d');
+	img = new Image();
+	img.onload = function () {
+		ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+		ctx.font = '40pt Calibri';
+		ctx.fillText(inputText, 200, 2000);
+	};
+	img.src = currentImg;
+}

@@ -199,7 +199,9 @@ button:hover {
 
 .editor {
   background-color: rgba(29, 103, 240, 0.534);
-  display: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -213,6 +215,7 @@ button:hover {
 }
 
 .editor__navbar ul {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -220,6 +223,7 @@ button:hover {
       -ms-flex-pack: center;
           justify-content: center;
   list-style: none;
+  text-align: center;
 }
 
 .editor__navbar ul li {
@@ -227,8 +231,7 @@ button:hover {
 }
 
 .editor__navbar ul li p {
-  width: 40%;
-  text-align: center;
+  width: 100%;
 }
 
 .editor__navbar ul li p:hover {
@@ -238,6 +241,23 @@ button:hover {
 
 .editor__navbar ul li input {
   display: none;
+}
+
+.editor__addtext {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 20px;
+}
+
+.editor__addtext input {
+  height: 20px;
 }
 
 .editor__container {

@@ -18,6 +18,11 @@ module.exports = function (msg, args) {
 		.filter((u) => u.id === respondent)
 		.map((u) => u.balance);
 
+	if (challenger.id === respondent) {
+		msg.channel.send(`You can't challenge yourself, morron.`);
+		return;
+	}
+
 	if (hasActiveBet(challenger.id)) {
 		msg.channel.send(
 			`<@!${challenger.id}>, you still have a pending bet, chill.`

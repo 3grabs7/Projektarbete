@@ -12,7 +12,6 @@ module.exports = function (msg, args) {
 
 	if (isChallenged) {
 		if (args === 'accept') {
-			msg.channel.send(`<@!${respondent}>, LET'$ GO!`);
 			msg.channel.send(runBet(respondent, challenger, betAmt));
 			scrapBet(activeBets, challenger, respondent);
 			return;
@@ -55,16 +54,13 @@ function settleBet(winner, loser, betAmt) {
 	let loserBalance =
 		gambleBalance.users.filter((user) => user.id === loser)[0]['balance'] -
 		betAmt;
-	console.log(winnerBalance);
-	console.log(loserBalance);
+
 	gambleBalance.users.filter((user) => user.id === winner)[0][
 		'balance'
 	] = winnerBalance;
 	gambleBalance.users.filter((user) => user.id === loser)[0][
 		'balance'
 	] = loserBalance;
-
-	console.log(gambleBalance);
 
 	localStorage.setItem('gambleBalance.json', JSON.stringify(gambleBalance));
 	return `<@!${winner}>'s balance : **${winnerBalance}**. <@!${loser}>'s balance : **${loserBalance}**.`;
