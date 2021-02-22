@@ -1,8 +1,14 @@
 const gambleResponse = require('./gambleresponse');
+const gambleLeaderboard = require('./gambleleaderboard');
 
 module.exports = function (msg, args) {
 	if (args[0] === 'accept' || args[0] === 'decline') {
 		gambleResponse(msg, args[0]);
+		return;
+	}
+
+	if (args[0] === 'leaderboard') {
+		gambleLeaderboard(msg);
 		return;
 	}
 
@@ -44,6 +50,9 @@ module.exports = function (msg, args) {
 		return;
 	}
 
+	if (!isValidUser(respondent)) {
+		msg.channel.send(`That's not a real person, do better!`);
+	}
 	logBet(challenger.id, respondent, bet);
 	msg.channel.send(
 		`<@!${respondent}>!\n**${challenger.username.toUpperCase()}** wants to get some gambling going.The bet is **${bet}**.\n - Will you **!gamble accept** or **!gamble decline** ?`
@@ -54,6 +63,8 @@ function hasActiveBet(userId) {
 	let activeBets = JSON.parse(localStorage.getItem('activeBets.json'));
 	return activeBets.bets.filter((b) => b.challenger === userId).length > 0;
 }
+
+function isValidUser(userId) {}
 
 function logBet(challenger, respondent, bet) {
 	let activeBets = JSON.parse(localStorage.getItem('activeBets.json'));
