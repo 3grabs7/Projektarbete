@@ -24,6 +24,11 @@ module.exports = function (msg, args) {
 		.filter((u) => u.id === respondent)
 		.map((u) => u.balance);
 
+	if (!isValidUser(respondent)) {
+		msg.channel.send(`That's not a real person, do better!`);
+		return;
+	}
+
 	if (challenger.id === respondent) {
 		msg.channel.send(`You can't challenge yourself, morron.`);
 		return;
@@ -50,9 +55,6 @@ module.exports = function (msg, args) {
 		return;
 	}
 
-	if (!isValidUser(respondent)) {
-		msg.channel.send(`That's not a real person, do better!`);
-	}
 	logBet(challenger.id, respondent, bet);
 	msg.channel.send(
 		`<@!${respondent}>!\n**${challenger.username.toUpperCase()}** wants to get some gambling going.The bet is **${bet}**.\n - Will you **!gamble accept** or **!gamble decline** ?`
@@ -64,7 +66,13 @@ function hasActiveBet(userId) {
 	return activeBets.bets.filter((b) => b.challenger === userId).length > 0;
 }
 
-function isValidUser(userId) {}
+function isValidUser(userId) {
+	return (
+		JSON.parse(localStorage.getItem('gambleBalance.json')).users.filter(
+			(u) => u.id === userId
+		).length > 0
+	);
+}
 
 function logBet(challenger, respondent, bet) {
 	let activeBets = JSON.parse(localStorage.getItem('activeBets.json'));
