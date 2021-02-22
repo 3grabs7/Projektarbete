@@ -1,3 +1,29 @@
+/* TEST HÄR */
+// Denna kod plockar filen som någon laddar upp.-> vi borde skapa så denna endast går igång
+// när man gjort ett tidigare command och då -> pushar bild
+const fs = require('fs');
+msg.attachments.forEach(a => {
+    fs.writeFileSync(`./${a.name}`, a.file); // Write the file to the system synchronously.
+});
+
+
+//args[0] = URL 
+// Testkod atm 
+function download(args[0], dest, cb) {
+    const http = require('http');
+    const fs = require('fs');
+    const file = fs.createWriteStream(upload());
+    let request = http.get(args[0], function(response) {
+        response.pipe(file);
+        file.on('finish', function() {
+        file.close(cb);  // close() is async, call cb after close completes.
+        });
+     }).on('error', function(err) { // Handle errors
+        fs.unlink(dest); // Delete the file async. (But we don't check the result)
+        if (cb) cb(err.message);
+     });
+};
+
 function upload(url) {
 	const http = 'https';
 

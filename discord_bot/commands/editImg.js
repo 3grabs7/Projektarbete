@@ -1,9 +1,7 @@
-//Fixa så vi får rätt query
-document.querySelector('.uploadImgAndCommand').addEventListener('click', () => {
-	getImage();
-});
 
-/* --------- fetchar till Sirv server där våra bilder skall lagras ----- */
+/* TEST HÄR */
+/*
+etchar till Sirv
 const http = require('https');
 let token = ' ';
 const options = {
@@ -37,8 +35,6 @@ req.write(
 	})
 );
 req.end();
-
-/* ------- Laddar upp bild från vår hemsida upp till Sirv-servern ---- */
 function getImage(token) {
 	const uploadImg = document.querySelector('.inputImg'); //Fixa så vi får rätt query
 	const uploadCommand = document.querySelector('.newCommand'); //Fixa så vi får rätt query
@@ -49,7 +45,7 @@ function getImage(token) {
 			method: 'POST',
 			hostname: 'api.sirv.com',
 			port: null,
-			path: `/v2/files/upload?filename=%2Fpath%2Fto%2F${uploadCommand}.jpg`,
+			path: `/v2/files/upload?filename=%2Fpath%2Fto%2F${uploadCommand}.jpg`, // Change too -> `/v2/files/upload?filename=%2Fpath%2Fto%2F${commandName}.jpg`
 			headers: {
 				'content-type': 'application/json',
 				authorization: `Bearer ${token}`,
@@ -79,3 +75,5 @@ function getImage(token) {
 //module.exports = async (msg, args) => {
 //	msg.channel.send(`https://demo.sirv.com/oman.jpg?text=Overlay text here!`);
 //};
+
+*/
