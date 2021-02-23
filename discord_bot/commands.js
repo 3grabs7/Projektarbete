@@ -6,7 +6,7 @@ const help = require('./commands/help');
 const gamble = require('./commands/gamble');
 const hi = require('./commands/hi');
 const poll = require('./commands/poll');
-const leaderboard = require('./commands/gambleleaderboard');
+const leaderboard = require('./commands/leaderboard');
 //const findnewmeme = require('./commands/editImg.js');
 
 const commands = {

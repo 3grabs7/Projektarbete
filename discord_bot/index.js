@@ -25,7 +25,7 @@ client.on('message', commandHandler);
 
 /*
  * -----------------------------
- * TEST CODE FOR POSTING TO NODE *
+ * TEST CODE FOR POSTING TO NODE
  * -----------------------------
  */
 var http = require('http');

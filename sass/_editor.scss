@@ -1,63 +1,72 @@
-
 .editor {
-    background-color: $primary-color;
-    display: flex;
-    flex-direction: column;
-    height: 88vh;
-    width: 100%;
+	background-color: $primary-color;
+	display: none;
+	flex-direction: column;
+	height: 88vh;
+	width: 100%;
 
-    &__navbar {
-        background-color: $primary-color-dark;
-        ul {
-            width: 100%;
-            display: flex;
-            justify-content:center;
-            list-style: none;
-            text-align: center;
-            li {
-                width: 10%;
-                p {
-                    width: 100%;
-                    &:hover {
-                        cursor: pointer ;
-                        color: $accent-color;
-                    }
-                }
-                input { display:none; }
-            }
-        }
-    }
-    &__addtext {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-top: 20px;
-        input {
-            height: 20px;
-        }
-    }
-    &__container {
-        background-color: $primary-color;
-        height: 85%;
-        width: 95%;
-        margin: auto;
+	&__navbar {
+		background-color: $primary-color-dark;
+		ul {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			list-style: none;
+			text-align: center;
+			li {
+				width: 10%;
+				p {
+					width: 100%;
+					&:hover {
+						cursor: pointer;
+						color: $accent-color;
+					}
+				}
+				input {
+					display: none;
+				}
+			}
+		}
+	}
+	&__addtext {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding-top: 20px;
+		input {
+			height: 20px;
+		}
+	}
+	&__container {
+		background-color: $primary-color;
+		height: 85%;
+		width: 95%;
+		margin: auto;
 
-        &__canvas {
-            background-color: white;
-            height: 90%;
-            width: 90%;
-            margin: 2% 5%;
-            border: 1px solid $accent-color;    
-        }
-    }
+		&__canvas {
+			background-color: white;
+			height: 90%;
+			width: 90%;
+			margin: 2% 5%;
+			border: 1px solid $accent-color;
+		}
+	}
 }
 
 @keyframes movein {
-    from{ top:-100px; }
-    to { top:0; }
+	from {
+		top: -100px;
+	}
+	to {
+		top: 0;
+	}
 }
 
 @keyframes moveout {
-    from{ top:0px; }
-    to { top:-100; }
+	from {
+		top: 0px;
+	}
+	to {
+		top: -100;
+	}
 }
