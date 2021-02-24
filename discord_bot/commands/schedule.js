@@ -10,7 +10,8 @@ module.exports = function (msg, args) {
 				},
 			],
 		});
-	} else if (args[0] == 'mars' || args[0] == 'march') {
+	}
+	if (args[0] == 'mars' || args[0] == 'march') {
 		msg.reply('Until 10th', {
 			files: [
 				{
@@ -27,7 +28,8 @@ module.exports = function (msg, args) {
 				},
 			],
 		});
-	} else if (args[0] == 'april') {
+	}
+	if (args[0] == 'april') {
 		msg.reply('Från 11 Mars: ', {
 			files: [
 				{
@@ -36,7 +38,8 @@ module.exports = function (msg, args) {
 				},
 			],
 		});
-	} else if (args[0] == 'maj' || args[0] == 'june' || args[0] == 'juni')
+	}
+	if (args[0] == 'maj' || args[0] == 'june' || args[0] == 'juni')
 		msg.reply('Från 26 Maj: ', {
 			files: [
 				{
@@ -45,4 +48,6 @@ module.exports = function (msg, args) {
 				},
 			],
 		});
+	if (args[0] == 'july' || args[0] == 'juli')
+		msg.reply('🚗🚗🏄🏻‍♂️🏄🏻‍♂️🏄🏻‍♂️SOMMARLOVV!! 🥳  🥳  🥳  🙌  🙌 ');
 };

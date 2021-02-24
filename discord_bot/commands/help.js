@@ -36,6 +36,16 @@ module.exports = function (msg, args) {
 				name: '!hi',
 				value: 'Socially awkward? I got you.',
 				inline: false,
+			},
+			{
+				name: '!uploadmeme <path> <command for img>',
+				value: 'path = C:/xxx/xxx/xx/img.jpg.',
+				inline: false,
+			},
+			{
+				name: '!ownmeme <command for img> <text on meme>',
+				value: '<command for img> = same command you put on uploadmeme. ',
+				inline: false,
 			}
 		)
 		// .setImage(
