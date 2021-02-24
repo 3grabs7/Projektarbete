@@ -7,7 +7,7 @@ const gamble = require('./commands/gamble');
 const hi = require('./commands/hi');
 const poll = require('./commands/poll');
 const leaderboard = require('./commands/leaderboard');
-const uploadmeme = require('./commands/editImg.js');
+const uploadmeme = require('./commands/uploadmeme');
 
 const commands = {
 	schedule,

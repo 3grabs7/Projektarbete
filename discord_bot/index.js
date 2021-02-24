@@ -22,23 +22,3 @@ function readyDiscord() {
 //* Forward commands
 const commandHandler = require('./commands');
 client.on('message', commandHandler);
-
-/*
- * -----------------------------
- * TEST CODE FOR POSTING TO NODE
- * -----------------------------
- */
-var http = require('http');
-var qs = require('querystring');
-var serverPort = 8124;
-http
-	.createServer(function (request, response) {
-		if (request.method === 'POST') {
-			console.log(request);
-		}
-		response.statusMessage = 'ok';
-		response.statusCode = 200;
-		response.end();
-	})
-	.listen(serverPort);
-console.log('Server running at localhost:' + serverPort);

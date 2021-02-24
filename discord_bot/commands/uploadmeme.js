@@ -58,24 +58,11 @@ module.exports = function (msg, args) {
 					authorization: `Bearer ${token}`,
 				},
 			};
-
-			let req = http.request(options, function (res) {
-				var chunks = [];
-
-				res.on('data', function (chunk) {
-					chunks.push(chunk);
-				});
-
-				res.on('end', function () {
-					var body = Buffer.concat(chunks);
-					console.log(body.toString());
-				});
-			});
-
+			let req = http.request(options);
 			req.write(fileData);
 			req.end();
 		});
-		console.log(token);
+		console.log(`Token : ${token}`);
 	}
 };
 //Tar in url samt en text för att då skapa en meme.
