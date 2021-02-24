@@ -1,9 +1,7 @@
 const fetch = require('node-fetch');
 
-
 module.exports = function (msg, args) {
-	
-	if(args[0] == "februari" ||  args[0] == "feb") {
+	if (args[0] == 'februari' || args[0] == 'feb') {
 		msg.reply('Från 4 januari: ', {
 			files: [
 				{
@@ -12,9 +10,7 @@ module.exports = function (msg, args) {
 				},
 			],
 		});
-		
-	}
-	else if(args[0] == "mars") {
+	} else if (args[0] == 'mars') {
 		msg.reply('Until 10th', {
 			files: [
 				{
@@ -31,9 +27,7 @@ module.exports = function (msg, args) {
 				},
 			],
 		});
-
-	}
-	else if(args[0] == "april") {
+	} else if (args[0] == 'april') {
 		msg.reply('Från 11 Mars: ', {
 			files: [
 				{
@@ -42,16 +36,13 @@ module.exports = function (msg, args) {
 				},
 			],
 		});
-
-	}
-	else if(args[0] == "maj"  || args[0] == "june")
-	msg.reply('Från 26 Maj: ', {
-		files: [
-			{
-				attachment: 'https://i.imgur.com/JPC13fK.png',
-				name: 'file.png',
-			},
-		],
-	});
-	
+	} else if (args[0] == 'maj' || args[0] == 'june')
+		msg.reply('Från 26 Maj: ', {
+			files: [
+				{
+					attachment: 'https://i.imgur.com/JPC13fK.png',
+					name: 'file.png',
+				},
+			],
+		});
 };
