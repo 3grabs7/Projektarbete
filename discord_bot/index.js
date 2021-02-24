@@ -22,3 +22,5 @@ function readyDiscord() {
 //* Forward commands
 const commandHandler = require('./commands');
 client.on('message', commandHandler);
+
+const server = require('./server');
