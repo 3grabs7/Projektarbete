@@ -42,6 +42,7 @@ module.exports = function (msg, args) {
 
 	function getImage(token) {
 		pathToFile = args[0];
+		imgName = args[1];
 		const fs = require('fs');
 		const http = require('https');
 
@@ -52,7 +53,7 @@ module.exports = function (msg, args) {
 				method: 'POST',
 				hostname: 'api.sirv.com',
 				port: null,
-				path: `/v2/files/upload?filename=%2Fpath%2Fto%2baby.jpg`,
+				path: `/v2/files/upload?filename=%2Fpath%2Fto%2F${imgName}.jpg`,
 				headers: {
 					'content-type': 'application/json',
 					authorization: `Bearer ${token}`,
