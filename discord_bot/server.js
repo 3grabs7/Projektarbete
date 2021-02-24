@@ -17,11 +17,15 @@ const server = http.createServer((req, res) => {
 	fs.readFile(filePath, (err, content) => {
 		if (err != null) {
 			res.writeHead(404, 'Du vet vad det betyder');
-			res.end();
+			console.log(err);
+			res.end(`Cant't find osv : ${err.code}`);
+			return;
 		}
-		res.writeHead(200, { 'Content-Type': extensions[extName] });
+		res.writeHead(200, {
+			'Access-Control-Allow-Origin': '*',
+			'Content-Type': extensions[extName],
+		});
 		res.end(content);
-		return;
 	});
 });
 const PORT = process.env.PORT || 3000;
