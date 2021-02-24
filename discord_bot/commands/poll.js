@@ -8,7 +8,6 @@ module.exports = function (msg, args) {
 
 	let msArgs = args.join(' ');
 
-	let count = 0;
 	msg.reply('📃 ' + '**' + msArgs + '**').then((messageReaction) => {
 		messageReaction.react('👍');
 		messageReaction.react('👎');
