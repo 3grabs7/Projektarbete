@@ -10,6 +10,7 @@ const leaderboard = require('./commands/leaderboard');
 const uploadmeme = require('./commands/uploadmeme');
 const ownmeme = require('./commands/ownmeme');
 const upload = require('./commands/upload');
+const serverinfo = require('./commands/serverinfo');
 
 const commands = {
 	schedule,
@@ -24,6 +25,7 @@ const commands = {
 	uploadmeme,
 	ownmeme,
 	upload,
+	serverinfo,
 };
 
 module.exports = (msg) => {
