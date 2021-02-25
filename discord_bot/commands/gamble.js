@@ -82,24 +82,58 @@ function logBet(challenger, respondent, bet, msg) {
 		bet: bet,
 	});
 	localStorage.setItem('activeBets.json', JSON.stringify(activeBets));
+
 	console.log('Bet logged');
-	setTimeout((challenger, respondent) => {
+
+	setTimeout(() => {
+		console.log(challenger, respondent);
 		let activeBets = JSON.parse(localStorage.getItem('activeBets.json'));
-		if (
+		let betActive =
 			activeBets.bets.filter(
 				(b) => b.challenger == challenger && b.respondent == respondent
-			).length > 0
-		) {
-			let updatedBets = activeBets.bets.filter(
+			).length > 0;
+		if (betActive) {
+			let betResolvedCheck = activeBets.bets.filter(
 				(b) => b.challenger != challenger && b.respondent != respondent
 			);
 			localStorage.setItem(
 				'activeBets.json',
-				JSON.stringify({ bets: updatedBets })
+				JSON.stringify({ bets: betResolvedCheck })
 			);
 			msg.channel.send(
-				`The bet between <@!${challanger}> and <@!${respondent}> expired. kys`
+				`The bet between <@!${challenger}> and <@!${respondent}> expired. kys`
 			);
+			console.log('Bet expired -> Removed');
 		}
 	}, 60000);
+
+	//2015 lösningen Clojure
+	// setTimeout(
+	// 	(function () {
+	// 		var challenger = challenger;
+	// 		var respondent = respondent;
+	// 		return function () {
+	// 			console.log(challenger, respondent);
+	// 			let activeBets = JSON.parse(localStorage.getItem('activeBets.json'));
+	// 			let betActive =
+	// 				activeBets.bets.filter(
+	// 					(b) => b.challenger == challenger && b.respondent == respondent
+	// 				).length > 0;
+	// 			if (betActive) {
+	// 				let betResolvedCheck = activeBets.bets.filter(
+	// 					(b) => b.challenger != challenger && b.respondent != respondent
+	// 				);
+	// 				localStorage.setItem(
+	// 					'activeBets.json',
+	// 					JSON.stringify({ bets: betResolvedCheck })
+	// 				);
+	// 				msg.channel.send(
+	// 					`The bet between <@!${challenger}> and <@!${respondent}> expired. kys`
+	// 				);
+	// 				console.log('Bet expired -> Removed');
+	// 			}
+	// 		};
+	// 	})(),
+	// 	2000
+	// );
 }
