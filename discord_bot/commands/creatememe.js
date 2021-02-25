@@ -1,91 +1,77 @@
-const fetch = require('node-fetch');
 const path = require('path');
+const http = require('https');
+const fs = require('fs');
+const clientId = 'HXIgZwV4kRP6NH3nnSRr4AQ6BRZ';
+const clientSecret =
+	'KbeglfeGnssK7btwZ5s/wCPGIJB+Qg7UPmh4THQ/ETvIA6S8ZM/h9PE0D79zqyNY3WF1VaOyFKVUulHYATSqXg==';
 
 module.exports = function (msg, args) {
-	if (!args) {
-		msg.reply('no img uploaded');
-	} else {
-		const http = require('https');
-		let token = ' ';
-		const options = {
-			method: 'POST',
-			hostname: 'api.sirv.com',
-			path: '/v2/token',
-			headers: {
-				'content-type': 'application/json',
-			},
-		};
-		const clientId = 'HXIgZwV4kRP6NH3nnSRr4AQ6BRZ';
-		const clientSecret =
-			'KbeglfeGnssK7btwZ5s/wCPGIJB+Qg7UPmh4THQ/ETvIA6S8ZM/h9PE0D79zqyNY3WF1VaOyFKVUulHYATSqXg==';
-		const req = http.request(options, (res) => {
-			const chunks = [];
+	const options = {
+		method: 'POST',
+		hostname: 'api.sirv.com',
+		path: '/v2/token',
+		headers: {
+			'content-type': 'application/json',
+		},
+	};
 
-			res.on('data', (chunk) => {
-				chunks.push(chunk);
-			});
-
-			res.on('end', () => {
-				const body = Buffer.concat(chunks);
-				const apiResponse = JSON.parse(body.toString());
-				getImage(apiResponse.token);
-			});
+	const req = http.request(options, (res) => {
+		const chunks = [];
+		res.on('data', (chunk) => {
+			chunks.push(chunk);
 		});
-		req.write(
-			JSON.stringify({
-				clientId,
-				clientSecret,
-			})
-		);
-		req.end();
-		msg.reply('Picture is now uploaded');
-	}
-
-	function getImage(token, err) {
-		pathFile = args[0];
-		const pathToFile = path.join(
-			__dirname,
-			`../uploadedimgs`,
-			`${pathFile}.jpg`
-		);
-
-		console.log(pathToFile);
-
-		const fs = require('fs');
-		const http = require('https');
-
-		//denna vill vi ha args[0] till.
-		//'C:/Users/cbchr/Desktop/old pictures/doglel.jpg';
-		fs.readFile(pathToFile, (err, fileData) => {
-			let options = {
-				method: 'POST',
-				hostname: 'api.sirv.com',
-				port: null,
-				path: `/v2/files/upload?filename=%2Fpath%2Fto%2F${pathFile}.jpg`,
-				headers: {
-					'content-type': 'application/json',
-					authorization: `Bearer ${token}`,
-				},
-			};
-			let req = http.request(options);
-			req.write(fileData);
-			req.end();
+		res.on('end', () => {
+			const body = Buffer.concat(chunks);
+			const token = JSON.parse(body.toString()).token;
+			//* Callback when token is generated and returned
+			loadImageWithAddedText(msg, args, token);
 		});
-		console.log(`Token : ${token}`);
-	}
-	setTimeout(() => {
-		msg.reply({
-			files: [
-				{
-					attachment: `https://abinkpoo.sirv.com/path/to/${args[0]}.jpg?text=${args[1]}&text.color=FFFFFF&text.font.weight=extra-bold&text.font.size=28&text.position.gravity=center&text.position.y=50`,
-					name: 'file.png',
-				},
-			],
-		});
-	}, 1000);
+	});
+	req.write(
+		JSON.stringify({
+			clientId,
+			clientSecret,
+		})
+	);
+	req.end();
 };
 
-//Tar in url samt en text för att då skapa en meme.
-//module.exports = async (msg, args) => {
-//	msg.channel.send(`https://demo.sirv.com/oman.jpg?text=Overlay text here!`);
-//};
+function loadImageWithAddedText(msg, args, token) {
+	const filePath = path.join(__dirname, `../uploadedimgs`, `${args[0]}.jpg`);
+
+	if (!fs.existsSync(filePath)) {
+		console.log(
+			`Image : ${filePath.split('\\').slice(-1)[0]}\nError : File not found`
+		);
+		return;
+	}
+	fs.readFile(filePath, (err, fileData) => {
+		let options = {
+			method: 'POST',
+			hostname: 'api.sirv.com',
+			port: null,
+			path: `/v2/files/upload?filename=%2Fpath%2Fto%2F${filePath}.jpg`,
+			headers: {
+				'content-type': 'application/json',
+				authorization: `Bearer ${token}`,
+			},
+		};
+		let req = http.request(options);
+		req.write(fileData, (err) => {
+			if (!err) {
+				msg.reply({
+					files: [
+						{
+							attachment: `https://abinkpoo.sirv.com/path/to/${args[0]}.jpg?text=${args[1]}&text.color=FFFFFF&text.font.weight=extra-bold&text.font.size=28&text.position.gravity=center&text.position.y=50`,
+							name: 'file.png',
+						},
+					],
+				});
+				msg.reply('Picture is now uploaded');
+				return;
+			}
+			console.log(err);
+		});
+		req.end();
+	});
+}
