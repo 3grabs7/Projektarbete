@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const path = require('path');
 
 module.exports = function (msg, args) {
 	if (!args) {
@@ -41,9 +42,15 @@ module.exports = function (msg, args) {
 	}
 
 	function getImage(token, err) {
-		pathToFile = `C:/Users/cbchr/jsprojectgrabs/Projektarbete/discord_bot/uploadedimgs/${args[0]}.jpg`;
+		pathFile = args[0];
+		const pathToFile = path.join(
+			__dirname,
+			`../uploadedimgs`,
+			`${pathFile}.jpg`
+		);
 
-		imgName = args[0];
+		console.log(pathToFile);
+
 		const fs = require('fs');
 		const http = require('https');
 
@@ -54,7 +61,7 @@ module.exports = function (msg, args) {
 				method: 'POST',
 				hostname: 'api.sirv.com',
 				port: null,
-				path: `/v2/files/upload?filename=%2Fpath%2Fto%2F${imgName}.jpg`,
+				path: `/v2/files/upload?filename=%2Fpath%2Fto%2F${pathFile}.jpg`,
 				headers: {
 					'content-type': 'application/json',
 					authorization: `Bearer ${token}`,
@@ -66,7 +73,17 @@ module.exports = function (msg, args) {
 		});
 		console.log(`Token : ${token}`);
 	}
+
+	msg.reply({
+		files: [
+			{
+				attachment: `https://abinkpoo.sirv.com/path/to/${args[0]}.jpg?text=${args[1]}&text.color=FFFFFF&text.font.weight=extra-bold&text.font.size=28&text.position.gravity=center&text.position.y=50`,
+				name: 'file.png',
+			},
+		],
+	});
 };
+
 //Tar in url samt en text för att då skapa en meme.
 //module.exports = async (msg, args) => {
 //	msg.channel.send(`https://demo.sirv.com/oman.jpg?text=Overlay text here!`);

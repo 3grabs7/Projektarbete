@@ -7,8 +7,7 @@ const gamble = require('./commands/gamble');
 const hi = require('./commands/hi');
 const poll = require('./commands/poll');
 const leaderboard = require('./commands/leaderboard');
-const uploadmeme = require('./commands/uploadmeme');
-const ownmeme = require('./commands/ownmeme');
+const creatememe = require('./commands/creatememe');
 const upload = require('./commands/upload');
 
 const commands = {
@@ -22,7 +21,7 @@ const commands = {
 	poll,
 	leaderboard,
 	uploadmeme,
-	ownmeme,
+	creatememe,
 	upload,
 };
 
