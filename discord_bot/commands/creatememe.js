@@ -50,7 +50,9 @@ function loadImageWithAddedText(msg, args, token) {
 			method: 'POST',
 			hostname: 'api.sirv.com',
 			port: null,
-			path: `/v2/files/upload?filename=%2Fpath%2Fto%2F${filePath}.jpg`,
+			path: `/v2/files/upload?filename=%2Fpath%2Fto%2F${
+				filePath.split('\\').slice(-1)[0]
+			}`,
 			headers: {
 				'content-type': 'application/json',
 				authorization: `Bearer ${token}`,
