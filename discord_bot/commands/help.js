@@ -47,8 +47,7 @@ module.exports = function (msg, args) {
 				inline: false,
 			},
 			{
-				name:
-					'!creatememe <img name> <text on meme> <font-size> <positiong on Y-axes on image.>',
+				name: '!creatememe <img name> <text on meme> <font-size>',
 				value: '<img name> = !upload name ',
 				inline: false,
 			}

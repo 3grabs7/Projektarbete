@@ -64,8 +64,8 @@ function loadImageWithAddedText(msg, args, token) {
 				msg.reply({
 					files: [
 						{
-							//args[0] = filename, args[1] = text on img, args[2] = font size, args[3] = positioning Y with text on img.
-							attachment: `https://abinkpoo.sirv.com/path/to/${args[0]}.jpg?text=${args[1]}&text.color=FFFFFF&text.font.weight=extra-bold&text.font.size=${args[2]}&text.position.gravity=center&text.position.y=${args[3]}`,
+							//args[0] = filename, args[1] = text on img, args[2] = font size
+							attachment: `https://abinkpoo.sirv.com/path/to/${args[0]}.jpg?text=${args[1]}&text.color=FFFFFF&text.font.weight=extra-bold&text.font.size=${args[2]}&text.position.gravity=center&text.position.y=40%&text.outline.width=5`,
 							name: 'file.png',
 						},
 					],
