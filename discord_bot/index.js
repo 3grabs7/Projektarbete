@@ -4,6 +4,7 @@ require('dotenv').config();
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
 const client = new Discord.Client();
+client.login(process.env.BOTTOKEN);
 
 //* Load local storage
 if (typeof localStorage === 'undefined' || localStorage === null) {

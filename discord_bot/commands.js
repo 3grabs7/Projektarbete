@@ -21,7 +21,6 @@ const commands = {
 	hi,
 	poll,
 	leaderboard,
-	uploadmeme,
 	creatememe,
 	upload,
 	serverinfo,
