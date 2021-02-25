@@ -40,9 +40,10 @@ module.exports = function (msg, args) {
 		msg.reply('Picture is now uploaded');
 	}
 
-	function getImage(token) {
-		pathToFile = args[0];
-		imgName = args[1];
+	function getImage(token, err) {
+		pathToFile = `C:/Users/cbchr/jsprojectgrabs/Projektarbete/discord_bot/uploadedimgs/${args[0]}.jpg`;
+
+		imgName = args[0];
 		const fs = require('fs');
 		const http = require('https');
 

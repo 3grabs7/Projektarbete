@@ -25,7 +25,11 @@ module.exports = function (msg, args) {
 				value: 'Make your dreams memes, check out website for codes.',
 				inline: false,
 			},
-			{ name: '!schedule', value: 'Never late. No escuses.', inline: false },
+			{
+				name: '!schedule <month>',
+				value: 'Never late. No escuses.',
+				inline: false,
+			},
 			{
 				name: '!gamble <User> <Bet amount>',
 				value:
