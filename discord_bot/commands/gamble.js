@@ -55,7 +55,7 @@ module.exports = function (msg, args) {
 		return;
 	}
 
-	logBet(challenger.id, respondent, bet);
+	logBet(challenger.id, respondent, bet, msg);
 	msg.channel.send(
 		`<@!${respondent}>!\n**${challenger.username.toUpperCase()}** wants to get some gambling going.The bet is **${bet}**.\n - Will you **!gamble accept** or **!gamble decline** ?`
 	);
@@ -74,7 +74,7 @@ function isValidUser(userId) {
 	);
 }
 
-function logBet(challenger, respondent, bet) {
+function logBet(challenger, respondent, bet, msg) {
 	let activeBets = JSON.parse(localStorage.getItem('activeBets.json'));
 	activeBets.bets.push({
 		challenger: challenger,
@@ -83,4 +83,23 @@ function logBet(challenger, respondent, bet) {
 	});
 	localStorage.setItem('activeBets.json', JSON.stringify(activeBets));
 	console.log('Bet logged');
+	setTimeout((challenger, respondent) => {
+		let activeBets = JSON.parse(localStorage.getItem('activeBets.json'));
+		if (
+			activeBets.bets.filter(
+				(b) => b.challenger == challenger && b.respondent == respondent
+			).length > 0
+		) {
+			let updatedBets = activeBets.bets.filter(
+				(b) => b.challenger != challenger && b.respondent != respondent
+			);
+			localStorage.setItem(
+				'activeBets.json',
+				JSON.stringify({ bets: updatedBets })
+			);
+			msg.channel.send(
+				`The bet between <@!${challanger}> and <@!${respondent}> expired. kys`
+			);
+		}
+	}, 60000);
 }
