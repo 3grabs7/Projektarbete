@@ -21,9 +21,9 @@ module.exports = function (msg, args) {
 			chunks.push(chunk);
 		});
 		res.on('end', () => {
+			//* Callback when token is generated and returned
 			const body = Buffer.concat(chunks);
 			const token = JSON.parse(body.toString()).token;
-			//* Callback when token is generated and returned
 			loadImageWithAddedText(msg, args, token);
 		});
 	});
@@ -67,7 +67,6 @@ function loadImageWithAddedText(msg, args, token) {
 						},
 					],
 				});
-				msg.reply('Picture is now uploaded');
 				return;
 			}
 			console.log(err);
