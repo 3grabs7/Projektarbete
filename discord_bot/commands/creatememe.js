@@ -73,15 +73,16 @@ module.exports = function (msg, args) {
 		});
 		console.log(`Token : ${token}`);
 	}
-
-	msg.reply({
-		files: [
-			{
-				attachment: `https://abinkpoo.sirv.com/path/to/${args[0]}.jpg?text=${args[1]}&text.color=FFFFFF&text.font.weight=extra-bold&text.font.size=28&text.position.gravity=center&text.position.y=50`,
-				name: 'file.png',
-			},
-		],
-	});
+	setTimeout(() => {
+		msg.reply({
+			files: [
+				{
+					attachment: `https://abinkpoo.sirv.com/path/to/${args[0]}.jpg?text=${args[1]}&text.color=FFFFFF&text.font.weight=extra-bold&text.font.size=28&text.position.gravity=center&text.position.y=50`,
+					name: 'file.png',
+				},
+			],
+		});
+	}, 1000);
 };
 
 //Tar in url samt en text för att då skapa en meme.
