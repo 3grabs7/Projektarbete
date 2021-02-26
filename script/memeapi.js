@@ -15,7 +15,6 @@ async function fetchMemes() {
 }
 
 function loadMemesToPage(memes) {
-	clearContainer();
 	let main = document.querySelector('.maincontainer__results');
 	memes.forEach((e) => {
 		let box = document.createElement('div');

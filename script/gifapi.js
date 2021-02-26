@@ -19,7 +19,6 @@ async function fetchGifs(search_term) {
 }
 
 async function loadGifsToPage(gifs) {
-	clearContainer();
 	let main = document.querySelector('.maincontainer__results');
 	gifs.forEach((e, i) => {
 		let box = document.createElement('div');

@@ -53,6 +53,11 @@ function saveImg() {
 function resetImg() {}
 
 //* ADD TEXT
+document.querySelector('#inputtext').addEventListener('keydown', (e) => {
+	if (e.keyCode === 13) {
+		addTextToCanvas();
+	}
+});
 function addTextToCanvas() {
 	const inputText = document.getElementById('inputtext').value;
 	const canvas = document.querySelector('.editor__container__canvas');
