@@ -1,3 +1,8 @@
+const userIds = {
+	Robin: 123,
+	Nånannan: 321,
+};
+
 module.exports = function (msg, args) {
 	const json = JSON.parse(localStorage.getItem('groups.json'));
 
@@ -12,5 +17,14 @@ module.exports = function (msg, args) {
 		msg.channel.send(response);
 		return;
 	}
-	msg.reply(`Your in group <>, stop stalling`);
+	let user = ''; //* Find name from userid in object userIds
+	let usersGroup = 0;
+	json.groups.forEach((g) => {
+		g.members.forEach((m) => {
+			if (m === user) {
+				usersGroup = g;
+			}
+		});
+	});
+	msg.reply(`Your in group ${usersGroup}, stop stalling`);
 };

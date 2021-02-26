@@ -1,3 +1,4 @@
+//* Hide/Show Create Groups
 document.getElementById('creategroupsbutton').addEventListener('click', (e) => {
 	let createGroups = document.querySelector('.hero__creategroups');
 	if (createGroups.style.display === 'flex') {
@@ -7,6 +8,7 @@ document.getElementById('creategroupsbutton').addEventListener('click', (e) => {
 	}
 });
 
+//* Add/Remove Groups when value's set
 document.getElementById('groupsamt').addEventListener('change', (e) => {
 	let mainContainer = document.querySelector('.hero__creategroups__forms');
 	let awaitedGroupsCount = document.getElementById('groupsamt').value;
@@ -45,6 +47,10 @@ document.getElementById('groupsamt').addEventListener('change', (e) => {
 	});
 });
 
+//* Add/remove number of group members
+//* ->
+
+//* Submit groups to server
 import { postGroups } from './modules/postGroupsToNode.js';
 document.getElementById('submitgroups').addEventListener('click', (e) => {
 	let groupsJSON = '';
