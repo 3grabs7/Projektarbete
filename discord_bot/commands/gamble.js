@@ -1,5 +1,5 @@
 const gambleResponse = require('./gambleresponse');
-const gambleLeaderboard = require('./leaderboard');
+const gambleLeaderboard = require('./gambleleaderboard');
 
 module.exports = function (msg, args) {
 	if (args[0] === 'accept' || args[0] === 'decline') {
