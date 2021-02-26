@@ -30,11 +30,10 @@ button:hover {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 600px;
   width: 100%;
 }
 .hero__text {
-  margin-top: 10rem;
+  margin-top: 3rem;
   margin-bottom: 2rem;
   text-align: center;
 }
@@ -51,6 +50,68 @@ button:hover {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+.hero__creategroups {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 5px 250px;
+  padding: 60px 200px;
+  padding-bottom: 120px;
+  height: auto;
+  background-color: rgba(15, 53, 124, 0.74);
+}
+.hero__creategroups__options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+.hero__creategroups__options p {
+  font-size: 32px;
+}
+.hero__creategroups__options input {
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  font-size: 24px;
+}
+.hero__creategroups__forms {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+}
+.hero__creategroups__forms__group {
+  width: 33%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 40px;
+}
+.hero__creategroups__forms__group h1 {
+  text-align: center;
+}
+.hero__creategroups__forms__group input {
+  margin: 2px 20px;
 }
 .hero__search {
   margin: 0;

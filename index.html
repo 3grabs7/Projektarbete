@@ -46,11 +46,54 @@
             <button id="memebutton">
                 Look at memes
             </button>
+            <button id="useruploadsbutton">
+                Look at user uploads
+            </button>
             <a href="https://discord.com/api/oauth2/authorize?client_id=811338096678535218&permissions=4228906096&scope=bot" target="_blank">
                 <button>
                     Add meme-bot here!
                 </button>
             </a>
+            <button id="creategroupsbutton">
+                Create Groups
+            </button>
+        </div>
+        <div class="hero__creategroups">
+            <div class="hero__creategroups__options">
+                <p>Groups :</p>
+                <input type="number" placeholder="0" min="0">
+            </div>
+            <div class="hero__creategroups__forms">
+                <div class="hero__creategroups__forms__group">
+                    <h1>Group 1</h1>
+                    <input type="text">
+                    <input type="text">
+                    <input type="text">
+                    <input type="text">
+                </div>
+                <div class="hero__creategroups__forms__group">
+                    <h1>Group 2</h1>
+                    <input type="text">
+                    <input type="text">
+                    <input type="text">
+                    <input type="text">
+                </div>
+                <div class="hero__creategroups__forms__group">
+                    <h1>Group 3</h1>
+                    <input type="text">
+                    <input type="text">
+                    <input type="text">
+                    <input type="text">
+                </div>
+                <div class="hero__creategroups__forms__group">
+                    <h1>Group 3</h1>
+                    <input type="text">
+                    <input type="text">
+                    <input type="text">
+                    <input type="text">
+                </div>
+            </div>
+            <button>Submit</button>
         </div>
         <div class="hero__search">
             <input class="search" type="text" id="search"  placeholder="Search gif" />
@@ -69,8 +112,9 @@
     </footer>
 </body>
 
-<script src="script/localnodeAPI.js"></script>
+<script src="./script/localnodeAPI.js"></script>
 <script src="./script/editor.js"></script>
+<script src="./script/creategroups.js"></script>
 <!-- <script src="./script/upload.js"></script> -->
 <script src="./script/gifapi.js"></script>
 <script src="./script/memeapi.js"></script>
