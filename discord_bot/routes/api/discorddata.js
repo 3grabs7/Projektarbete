@@ -16,6 +16,16 @@ router.get('/:cat', (req, res) => {
 });
 
 router.get('/members/:id', (req, res) => {
+	let found =
+		discordData['members'].filter(
+			(member) => member.id === parseInt(req.params.id)
+		).length > 0;
+	if (!found) {
+		res
+			.status(400)
+			.json({ msg: `Id : ${req.params.id} not found in members list` });
+		return;
+	}
 	res.json(
 		discordData['members'].filter(
 			(member) => member.id === parseInt(req.params.id)
