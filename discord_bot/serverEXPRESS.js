@@ -19,7 +19,7 @@ app.use('/api/discorddata', require('./routes/api/discorddata'));
 //* ---------
 
 //* Route create groupsrequests
-app.use('/api/creategroups', require('./routes/api/creategroups'));
+app.use('/api/creategroups', require('./routes/api/grouphandler'));
 
 const PORT = process.env.PORTEXPRESS || 4000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
