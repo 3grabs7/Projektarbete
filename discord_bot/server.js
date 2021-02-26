@@ -11,7 +11,7 @@ const extensions = {
 
 const server = http.createServer((req, res) => {
 	let args = req.url.split('/').slice(1);
-	let filePath = path.join(__dirname, args[0], `${args[1]}`);
+	let filePath = path.join(__dirname, 'public', args[0], `${args[1]}`);
 	let extName = path.extname(filePath);
 
 	fs.readFile(filePath, (err, content) => {

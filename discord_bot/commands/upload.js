@@ -8,7 +8,7 @@ module.exports = function (msg, args) {
 		request(img.url)
 			.pipe(
 				fs.createWriteStream(
-					`./uploadedimgs/${args[0]}.${img.url.split('.').slice(-1)[0]}`
+					`.public/imguploads/${args[0]}.${img.url.split('.').slice(-1)[0]}`
 				)
 			)
 			.on('close', () => console.log('done'));

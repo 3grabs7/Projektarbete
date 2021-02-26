@@ -24,3 +24,4 @@ const commandHandler = require('./commands');
 client.on('message', commandHandler);
 
 const server = require('./server');
+const serverExpress = require('./serverEXPRESS');

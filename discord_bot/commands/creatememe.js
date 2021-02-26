@@ -37,7 +37,11 @@ module.exports = function (msg, args) {
 };
 
 function loadImageWithAddedText(msg, args, token) {
-	const filePath = path.join(__dirname, `../uploadedimgs`, `${args[0]}.jpg`);
+	const filePath = path.join(
+		__dirname,
+		`../public/imguploads`,
+		`${args[0]}.jpg`
+	);
 
 	if (!fs.existsSync(filePath)) {
 		console.log(
