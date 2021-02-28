@@ -96,12 +96,16 @@ function inputToJson(obj) {
 	});
 	return jsonTemplate;
 }
+
 async function postGroups(data) {
+	alert(JSON.stringify(data));
 	let url = 'http://localhost:4000/api/creategroups';
 	let options = {
 		method: 'POST',
-		mode: 'no-cors',
-		headers: { 'content-type': 'application/json}' },
+		mode: 'cors',
+		headers: {
+			'content-type': 'application/json',
+		},
 		body: JSON.stringify(data),
 	};
 

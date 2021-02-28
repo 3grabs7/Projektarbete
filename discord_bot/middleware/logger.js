@@ -4,7 +4,7 @@ const logger = (req, res, next) => {
 	console.log(
 		`REQUEST : ${req.protocol}://${req.get('host')}${
 			req.originalUrl
-		}: ${moment().format()}`
+		}: ${moment().format()}\nHeaders : ${JSON.stringify(req.headers)}`
 	);
 	next();
 };
