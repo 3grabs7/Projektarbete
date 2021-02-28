@@ -1,6 +1,6 @@
 const path = require('path');
 const logger = require('./middleware/logger');
-const cors = require('cors');
+const corsMiddleware = require('./middleware/cors');
 const express = require('express');
 const app = express();
 
@@ -9,6 +9,8 @@ app.use(logger);
 //* Body Parser Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+//* Cors middleware
+app.use(corsMiddleware);
 
 //* Static folder
 app.use(express.static(path.join(__dirname, 'public')));
@@ -21,12 +23,12 @@ app.get('/api/imguploads', (req, res) => {
 	res.send('Fuck you for now');
 });
 
+//* Route create groupsrequests
+app.use('/api/creategroups', require('./routes/api/grouphandler'));
+
+//* Error page trying to access invalid urls
 app.use((req, res) => {
 	res.sendFile(path.join(__dirname, 'public', 'notfound.html'));
 });
-
-//* Route create groupsrequests
-app.use('/api/creategroups', cors(), require('./routes/api/grouphandler'));
-
 const PORT = process.env.PORTEXPRESS || 4000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

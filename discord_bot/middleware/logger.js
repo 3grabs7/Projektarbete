@@ -1,6 +1,6 @@
 const moment = require('moment');
 
-const logger = (req, res, next) => {
+module.exports = function (req, res, next) {
 	console.log(
 		`REQUEST : ${req.protocol}://${req.get('host')}${
 			req.originalUrl
@@ -8,5 +8,3 @@ const logger = (req, res, next) => {
 	);
 	next();
 };
-
-module.exports = logger;

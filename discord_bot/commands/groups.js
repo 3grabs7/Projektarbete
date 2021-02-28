@@ -2,6 +2,11 @@ module.exports = function (msg, args) {
 	const userIds = JSON.parse(localStorage.getItem('userids.json')).users;
 	const json = JSON.parse(localStorage.getItem('groups.json'));
 
+	if (!json.groups) {
+		msg.channel.send('There are no groups at the moment.');
+		return;
+	}
+
 	if (!args[0]) {
 		let response = '**Groups**\n';
 		json.groups.forEach((group) => {
