@@ -15,6 +15,7 @@ document.getElementById('groupsamt').addEventListener('change', (e) => {
 	let currentGroupsCount = document.querySelectorAll(
 		'.hero__creategroups__forms__group'
 	).length;
+	let membersCount = document.getElementById('membersamt').value;
 
 	if (awaitedGroupsCount > currentGroupsCount) {
 		let newGroupsCount = awaitedGroupsCount - currentGroupsCount;
@@ -26,7 +27,7 @@ document.getElementById('groupsamt').addEventListener('change', (e) => {
 			head.innerText = `Group ${currentGroupsCount + i}`;
 			container.appendChild(head);
 
-			for (let j = 0; j < 4; j++) {
+			for (let j = 0; j < membersCount; j++) {
 				let input = document.createElement('input');
 				input.type = 'text';
 				container.appendChild(input);
@@ -48,7 +49,28 @@ document.getElementById('groupsamt').addEventListener('change', (e) => {
 });
 
 //* Add/remove number of group members
-//* ->
+document.getElementById('membersamt').addEventListener('change', (e) => {
+	let groups = document.querySelectorAll('.hero__creategroups__forms__group');
+	let awaitedMembersCount = document.getElementById('membersamt').value;
+	let currentMembersCount =
+		document.querySelectorAll('.hero__creategroups__forms__group input')
+			.length / groups.length;
+
+	let newMembersCount = awaitedMembersCount - currentMembersCount;
+	Array.from(groups).forEach((group) => {
+		if (awaitedMembersCount > currentMembersCount) {
+			for (let i = 0; i < newMembersCount; i++) {
+				let input = document.createElement('input');
+				input.type = 'text';
+				group.appendChild(input);
+			}
+		} else {
+			for (let i = 0; i < Math.abs(newMembersCount); i++) {
+				group.removeChild(group.lastChild);
+			}
+		}
+	});
+});
 
 //* Submit groups to server
 document.getElementById('submitgroups').addEventListener('click', (e) => {
@@ -82,5 +104,11 @@ async function postGroups(data) {
 		headers: { 'content-type': 'application/json}' },
 		body: JSON.stringify(data),
 	};
+
 	const response = await fetch(url, options);
+
+	if (response.ok) {
+		const json = response.json();
+		console.log(json.msg);
+	}
 }
