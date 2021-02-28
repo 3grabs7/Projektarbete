@@ -1,5 +1,6 @@
 const path = require('path');
 const logger = require('./middleware/logger');
+const cors = require('cors');
 const express = require('express');
 const app = express();
 
@@ -19,7 +20,7 @@ app.use('/api/discorddata', require('./routes/api/discorddata'));
 //* ---------
 
 //* Route create groupsrequests
-app.use('/api/creategroups', require('./routes/api/grouphandler'));
+app.use('/api/creategroups', cors(), require('./routes/api/grouphandler'));
 
 const PORT = process.env.PORTEXPRESS || 4000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

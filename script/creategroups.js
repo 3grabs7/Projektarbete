@@ -51,12 +51,36 @@ document.getElementById('groupsamt').addEventListener('change', (e) => {
 //* ->
 
 //* Submit groups to server
-import { postGroups } from './modules/postGroupsToNode.js';
-import { inputToJson } from './modules/groupsInputToJson.js';
-document.getElementById('submitgroups').addEventListener('click', async (e) => {
+document.getElementById('submitgroups').addEventListener('click', (e) => {
 	let inputCollection = document.querySelectorAll(
 		'.hero__creategroups__forms__group'
 	);
-	let response = await postGroups(inputToJson(inputCollection));
-	console.log(response);
+	postGroups(inputToJson(inputCollection));
 });
+
+function inputToJson(obj) {
+	let jsonTemplate = { groups: [] };
+	Array.from(obj).forEach((element) => {
+		let group = { groupId: 0, members: [] };
+		Array.from(element.querySelectorAll('*')).forEach((tag, i) => {
+			if (i === 0) {
+				group.groupId = tag.innerText.split(' ')[1];
+			} else {
+				group.members.push(tag.value);
+			}
+		});
+		jsonTemplate.groups.push(group);
+	});
+	return jsonTemplate;
+}
+async function postGroups(data) {
+	let url = 'http://localhost:4000/api/creategroups';
+	let options = {
+		method: 'POST',
+		mode: 'cors',
+		headers: { 'content-type': 'application/json}' },
+		body: JSON.stringify(data),
+	};
+	const response = await fetch(url, options);
+	const json = await response.json();
+}
