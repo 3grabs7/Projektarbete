@@ -17,14 +17,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/discorddata', require('./routes/api/discorddata'));
 
 //* Route img uploads requests
-//* ---------
+app.get('/api/imguploads', (req, res) => {
+	res.send('Fuck you for now');
+});
 
 //* Route create groupsrequests
 app.use('/api/creategroups', cors(), require('./routes/api/grouphandler'));
 
 const PORT = process.env.PORTEXPRESS || 4000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
-app.get('/api/imguploads', (req, res) => {
-	res.send('Fuck you for now');
-});

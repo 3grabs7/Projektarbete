@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin: 0 auto;
+    color:black;
+    background-color: white;
+    animation: h1colorchange 0.5s infinite;
+}
+
+p {
+    margin-top: 200px;
+    font-size: 60px;
+    text-align: center;
+    animation: pdiscomfort 0.5s alternate infinite;
+}
+
+@keyframes h1colorchange{
+    from {
+        color:black;
+        background-color: white;
+    }
+    to {
+        color:white;
+        background-color: black;
+    }
+}
+
+@keyframes pdiscomfort {
+    from {
+        transform: rotate(0deg);
+        font-size: 60px;
+    }
+    to {
+        transform: rotate(360deg);
+        font-size: 140px;
+    }
+}
