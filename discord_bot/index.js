@@ -13,15 +13,20 @@ if (typeof localStorage === 'undefined' || localStorage === null) {
 	console.log('Connected to local storage');
 }
 
-//* Bot is ready
-client.on('ready', readyDiscord);
-function readyDiscord() {
-	console.log('Connected as ' + client.user.tag);
-}
-
 //* Forward commands
 const commandHandler = require('./commands');
 client.on('message', commandHandler);
 
+//* Data collector from discord group
+const dataHandler = require('./datahandler');
+
+//* Bot is ready
+client.on('ready', readyDiscord);
+function readyDiscord() {
+	console.log('Connected as ' + client.user.tag);
+	dataHandler(client);
+}
+
+//* Servers
 const server = require('./server');
 const serverExpress = require('./serverEXPRESS');

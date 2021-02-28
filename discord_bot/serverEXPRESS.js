@@ -21,6 +21,10 @@ app.get('/api/imguploads', (req, res) => {
 	res.send('Fuck you for now');
 });
 
+app.use((req, res) => {
+	res.sendFile(path.join(__dirname, 'public', 'notfound.html'));
+});
+
 //* Route create groupsrequests
 app.use('/api/creategroups', cors(), require('./routes/api/grouphandler'));
 

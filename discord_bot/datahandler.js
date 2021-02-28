@@ -1,4 +1,9 @@
+const userIds = JSON.parse(localStorage.getItem('userids.json')).users.map(
+	(user) => user.id
+);
+
 module.exports = function (client) {
-	const guild = client.guilds.array();
-	console.log();
+	client.on('message', (msg) => {
+		const { author } = msg;
+	});
 };

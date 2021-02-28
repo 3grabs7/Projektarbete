@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const discordData = require('../../public/discorddata/data');
+const discordData = require('../../public/discorddata/data.js');
 
 router.get('/', (req, res) => res.json(discordData));
 
@@ -15,11 +15,12 @@ router.get('/:cat', (req, res) => {
 	res.json(discordData[req.params.cat]);
 });
 
-router.get('/members/:id', (req, res) => {
+router.get('/users/:id', (req, res) => {
 	let found =
-		discordData['members'].filter(
-			(member) => member.id === parseInt(req.params.id)
-		).length > 0;
+		discordData.users.filter((member) => member.id === req.params.id).length >
+			0 ||
+		discordData.users.filter((member) => member.name === req.params.id).length >
+			0;
 	if (!found) {
 		res
 			.status(400)
@@ -27,8 +28,8 @@ router.get('/members/:id', (req, res) => {
 		return;
 	}
 	res.json(
-		discordData['members'].filter(
-			(member) => member.id === parseInt(req.params.id)
+		discordData.users.filter(
+			(member) => member.id === req.params.id || member.name === req.params.id
 		)
 	);
 });
