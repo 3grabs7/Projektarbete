@@ -52,7 +52,11 @@ document.getElementById('groupsamt').addEventListener('change', (e) => {
 
 //* Submit groups to server
 import { postGroups } from './modules/postGroupsToNode.js';
-document.getElementById('submitgroups').addEventListener('click', (e) => {
-	let groupsJSON = '';
-	postGroups(groupsJSON);
+import { inputToJson } from './modules/groupsInputToJson.js';
+document.getElementById('submitgroups').addEventListener('click', async (e) => {
+	let inputCollection = document.querySelectorAll(
+		'.hero__creategroups__forms__group'
+	);
+	let response = await postGroups(inputToJson(inputCollection));
+	console.log(response);
 });
