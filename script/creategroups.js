@@ -55,7 +55,8 @@ document.getElementById('submitgroups').addEventListener('click', (e) => {
 	let inputCollection = document.querySelectorAll(
 		'.hero__creategroups__forms__group'
 	);
-	postGroups(inputToJson(inputCollection));
+	let json = inputToJson(inputCollection);
+	postGroups(json);
 });
 
 function inputToJson(obj) {
@@ -77,10 +78,9 @@ async function postGroups(data) {
 	let url = 'http://localhost:4000/api/creategroups';
 	let options = {
 		method: 'POST',
-		mode: 'cors',
+		mode: 'no-cors',
 		headers: { 'content-type': 'application/json}' },
 		body: JSON.stringify(data),
 	};
 	const response = await fetch(url, options);
-	const json = await response.json();
 }
