@@ -4,13 +4,6 @@ const fs = require('fs');
 const path = require('path');
 const imgFolder = path.join(__dirname, '../../public/imguploads');
 
-const extensions = {
-	'.js': 'text/javascript',
-	'.json': 'application/json',
-	'.jpg': 'image/jpg',
-	'.png': 'image/png',
-};
-
 router.get('/', (req, res) => {
 	let imgList = { imgs: [] };
 

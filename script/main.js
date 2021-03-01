@@ -8,6 +8,11 @@ document.querySelector('#memebutton').addEventListener('click', () => {
 	fetchMemes();
 });
 
+document.querySelector('#server').addEventListener('click', () => {
+	clearContainer();
+	getImgFromNode();
+});
+
 document.querySelector('.submit').addEventListener('click', () => {
 	clearContainer();
 	fetchGifs();
