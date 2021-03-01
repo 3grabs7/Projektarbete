@@ -23,5 +23,5 @@ module.exports = function (client) {
 	);
 
 	memeGuildGeneral.send(`@everyone ${response}`);
-	//gbgGuildGeneral.send('.');
+	//gbgGuildGeneral.send(`@everyone ${response}`);
 };

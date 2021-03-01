@@ -19,9 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/discorddata', require('./routes/api/discorddata'));
 
 //* Route img uploads requests
-app.get('/api/imguploads', (req, res) => {
-	res.send('Fuck you for now');
-});
+app.use('/api/imguploads', require('./routes/api/getimguploads'));
 
 //* Route create groupsrequests
 app.use('/api/creategroups', require('./routes/api/grouphandler'));

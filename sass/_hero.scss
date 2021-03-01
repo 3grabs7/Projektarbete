@@ -21,7 +21,7 @@
 	}
 
 	&__creategroups {
-		display: flex;
+		display: none;
 		flex-direction: column;
 		align-items: center;
 		margin: 5px 0;
@@ -76,39 +76,37 @@
 	}
 
 	&__search {
-		margin: 0;
-		width: 40%;
-		height: 100%;
-
-		border-radius: 20px;
+		width: 30%;
+		margin: 0 auto;
 		text-align: center;
 		font-weight: bold;
 		display: flex;
-		flex-direction: column;
-		align-self: center;
+		flex-direction: row;
 
 		.search {
-			margin-top: 20px;
-			border-radius: 20px;
-			border: 3px solid black;
-			text-align: center;
+			margin: 0 auto;
 			height: 30px;
+			width: 80%;
+			margin: 20px auto;
+			border-radius: 20px;
+			border: 2px solid $primary-color-dark;
+			text-align: center;
 			&:focus {
 				outline: none;
 			}
 		}
 		.submit {
+			height: 30px;
+			width: 20%;
 			margin: 20px auto;
-			width: 50%;
-			height: 40px;
 			border-radius: 20px;
-			background-color: black;
+			background-color: $primary-color-dark;
 			color: white;
-			cursor: pointer;
-			align-self: center;
+			font-size: 700;
+			text-align: center;
 			&:hover {
 				opacity: 90%;
-				box-shadow: 0 0 30px rgba(33, 33, 33, 0.2);
+				box-shadow: 0 0 10px $primary-color-dark;
 				cursor: pointer;
 			}
 		}

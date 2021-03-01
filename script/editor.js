@@ -42,15 +42,24 @@ document.getElementById('inputimg').addEventListener(
 );
 
 //* SAVE IMG
-document.getElementById('saveimg').addEventListener('click', saveImg);
+document.getElementById('saveimg').addEventListener('click', () => {
+	const canvas = document.querySelector('.editor__container__canvas');
+	var image = canvas
+		.toDataURL('image/png')
+		.replace('image/png', 'image/octet-stream');
+
+	window.location.href = image;
+});
 
 //* RESET IMG
-document.getElementById('resetimg').addEventListener('click', resetImg);
-
-function saveImg() {
-	//* img.src = canvas.toDataURL();
-}
-function resetImg() {}
+document.getElementById('resetimg').addEventListener('click', () => {
+	const canvas = document.querySelector('.editor__container__canvas');
+	canvas.width = document.body.clientWidth * 0.85 * 0.9; /// use integer values
+	canvas.height = document.body.clientHeight * 0.95 * 0.9;
+	ctx = canvas.getContext('2d');
+	ctx.fillStyle = 'white';
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
+});
 
 //* ADD TEXT
 document.querySelector('#inputtext').addEventListener('keydown', (e) => {
