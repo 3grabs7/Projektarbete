@@ -2,7 +2,7 @@ module.exports = function (client) {
 	const json = JSON.parse(localStorage.getItem('groups.json'));
 
 	if (!json.groups) {
-		console.log('The updated groups data was empty');
+		console.log('The updated groups data was empty or corrupt');
 		return;
 	}
 
@@ -28,5 +28,5 @@ module.exports = function (client) {
 	);
 
 	memeGuildGeneral.send(`@everyone ${response}`);
-	//gbgGuildGeneral.send(`@everyone ${response}`);
+	gbgGuildGeneral.send(`@everyone ${response}`);
 };

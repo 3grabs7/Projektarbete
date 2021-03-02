@@ -33,5 +33,4 @@ function readyDiscord() {
 }
 
 //* Servers
-const server = require('./server');
 const serverExpress = require('./serverEXPRESS');
