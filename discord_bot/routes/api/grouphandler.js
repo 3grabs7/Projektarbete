@@ -4,6 +4,7 @@ const router = express.Router();
 router.post('/', (req, res) => {
 	//* How to error handle stringify?!?!
 	console.log(req.body);
+
 	localStorage.setItem('groups.json', JSON.stringify(req.body));
 
 	return res

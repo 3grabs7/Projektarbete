@@ -1,6 +1,11 @@
 module.exports = function (client) {
 	const json = JSON.parse(localStorage.getItem('groups.json'));
 
+	if (!json.groups) {
+		console.log('The updated groups data was empty');
+		return;
+	}
+
 	let response = 'Groups just got updated : \n**Groups**\n';
 	json.groups.forEach((group) => {
 		response += `Grupp ${group.groupId} - `;

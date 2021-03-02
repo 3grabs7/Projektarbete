@@ -102,7 +102,7 @@ async function postGroups(data) {
 	let url = 'http://localhost:4000/api/creategroups';
 	let options = {
 		method: 'POST',
-		mode: 'no-cors',
+		mode: 'cors',
 		headers: {
 			'content-type': 'application/json',
 		},

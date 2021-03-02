@@ -1,24 +1,7 @@
 async function getImgFromNode() {
-	// let response = await fetch('http://localhost:4000/imguploads/');
-	// let json = await response.json();
-	// console.log(json);
-
-	let json = {
-		imgs: [
-			'123.jpg',
-			'betty.jpg',
-			'chris.jpg.jpg',
-			'cutedooog.jpg',
-			'cutepuppy.jpg',
-			'cutiepie.jpg',
-			'hehe.jpg',
-			'mememan.jpg',
-			'meth.jpg',
-			'sad.jpg',
-			'steffish.jpg',
-			'steffo.jpg',
-		],
-	};
+	let response = await fetch('http://localhost:4000/api/imguploads/');
+	let json = await response.json();
+	console.log(json);
 
 	let main = document.querySelector('.maincontainer__results');
 	json.imgs.forEach(async (imgPath) => {
