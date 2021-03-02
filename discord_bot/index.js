@@ -32,5 +32,5 @@ function readyDiscord() {
 	dataHandler(client);
 }
 
-//* Servers
+//* Server
 const serverExpress = require('./serverEXPRESS');

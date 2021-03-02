@@ -26,7 +26,7 @@ module.exports = function (msg, args) {
 				inline: false,
 			},
 			{
-				name: '!schedule <month>',
+				name: '!schedule <Month>',
 				value: 'Never late. No escuses.',
 				inline: false,
 			},
@@ -42,13 +42,18 @@ module.exports = function (msg, args) {
 				inline: false,
 			},
 			{
-				name: '!upload <name>',
-				value: 'Attach img',
+				name: '!upload <Assign Name>',
+				value: 'Upload your own img. Attach img to msg',
 				inline: false,
 			},
 			{
-				name: '!creatememe <img name> <text on meme> <font-size>',
-				value: '<img name> = !upload name ',
+				name: '!creatememe <Img Name> <Text> <Font-Size>',
+				value: 'Create memes from uploaded images',
+				inline: false,
+			},
+			{
+				name: '!groups',
+				value: 'Get all current groups. Add <get> to find your group',
 				inline: false,
 			}
 		)

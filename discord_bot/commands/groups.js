@@ -19,21 +19,23 @@ module.exports = function (msg, args) {
 		return;
 	}
 
-	let usersGroup = -1;
-	let authorId = msg.author.toString().replace(/[^0-9]/g, '');
-	let userName = userIds.filter((user) => user.id === authorId)[0].name;
+	if (args[0] === 'get') {
+		let usersGroup = -1;
+		let authorId = msg.author.toString().replace(/[^0-9]/g, '');
+		let userName = userIds.filter((user) => user.id === authorId)[0].name;
 
-	json.groups.forEach((g) => {
-		g.members.forEach((m) => {
-			if (m.toLowerCase() === userName.toLowerCase()) {
-				usersGroup = g.groupId;
-			}
+		json.groups.forEach((g) => {
+			g.members.forEach((m) => {
+				if (m.toLowerCase() === userName.toLowerCase()) {
+					usersGroup = g.groupId;
+				}
+			});
 		});
-	});
 
-	if (usersGroup === -1) {
-		msg.reply('You got no group man, sorry');
-		return;
+		if (usersGroup === -1) {
+			msg.reply('You got no group man, sorry');
+			return;
+		}
+		msg.reply(`Your in group ${usersGroup}, stop stalling`);
 	}
-	msg.reply(`Your in group ${usersGroup}, stop stalling`);
 };
