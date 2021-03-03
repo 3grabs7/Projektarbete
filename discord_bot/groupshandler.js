@@ -50,8 +50,14 @@ function createChannels(obj, memeGuild) {
 		memeGuild.channels
 			.create(`Grupp:${obj[i].groupId}`, {
 				type: 'category',
+				permissionOverwrites: [
+					{
+						id: memeGuild.me.roles.highest,
+						allow: ['VIEW_CHANNEL', 'MANAGE_CHANNELS', 'MANAGE_ROLES'],
+					},
+				],
 			})
-			.then((channel) => {
+			.then(async (channel) => {
 				// create text channel in category 'i'
 				memeGuild.channels
 					.create('Chat osv', { type: 'text' })
@@ -79,7 +85,7 @@ function createChannels(obj, memeGuild) {
 					)[0].id;
 					console.log(userId);
 					// get user object from user id  //* TODO - find doesn't work, read documentation
-					let user = memeGuild.members.cache.find((user) => user.id === userId);
+					let user = await memeGuild.members.fetch(userId);
 					console.log(user);
 
 					channel.updateOverwrite(user, { VIEW_CHANNEL: true });

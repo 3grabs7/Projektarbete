@@ -1,17 +1,10 @@
 {
     "groups": [
         {
-            "groupId": "1",
+            "groupId": "6",
             "members": [
                 "Robin",
                 "Christopher"
-            ]
-        },
-        {
-            "groupId": "2",
-            "members": [
-                "Christopher",
-                "Björn"
             ]
         }
     ]
