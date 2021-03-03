@@ -12,6 +12,7 @@ const upload = require('./commands/upload');
 const serverinfo = require('./commands/serverinfo');
 const groups = require('./commands/groups');
 const clearspam = require('./commands/spamhandler');
+const status = require('./commands/updatestatus');
 
 const commands = {
 	schedule,
@@ -28,15 +29,16 @@ const commands = {
 	serverinfo,
 	groups,
 	clearspam,
+	status,
 };
 
-module.exports = (msg) => {
+module.exports = (msg, client) => {
 	let tokens = msg.content.split(/\s+/g);
 	let command = tokens.shift();
 	if (command.charAt(0) === '!') {
 		command = command.substring(1);
 		if (commands[command] != undefined) {
-			commands[command](msg, tokens);
+			commands[command](msg, tokens, client);
 			return;
 		}
 		console.log('Invalid command');

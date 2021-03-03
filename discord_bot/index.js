@@ -14,7 +14,7 @@ if (typeof localStorage === 'undefined' || localStorage === null) {
 
 //* Forward commands
 const commandHandler = require('./commands');
-client.on('message', commandHandler);
+client.on('message', (msg) => commandHandler(msg, client));
 
 //* Data collector from discord group
 const dataHandler = require('./datahandler');

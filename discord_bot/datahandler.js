@@ -4,8 +4,13 @@ const userIds = JSON.parse(localStorage.getItem('userids.json')).users.map(
 
 module.exports = function (client) {
 	startUpMsg(client);
+
 	client.on('message', (msg) => {
-		const { author } = msg;
+		const author = msg.author;
+	});
+
+	client.on('reaction', (msg) => {
+		const author = msg.author;
 	});
 };
 
