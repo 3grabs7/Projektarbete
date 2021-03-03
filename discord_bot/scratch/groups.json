@@ -1,1 +1,18 @@
-{"groups":[{"groupId":"1","members":["Robin","Christopher"]},{"groupId":"2","members":["Jack","Bella"]},{"groupId":"3","members":["Stefan","Richard"]}]}
+{
+    "groups": [
+        {
+            "groupId": "1",
+            "members": [
+                "Robin",
+                "Christopher"
+            ]
+        },
+        {
+            "groupId": "2",
+            "members": [
+                "Christopher",
+                "Björn"
+            ]
+        }
+    ]
+}

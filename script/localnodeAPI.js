@@ -19,6 +19,7 @@ async function getImgFromNode() {
 		main.append(box);
 	});
 
+	//* Omitted
 	//* Test to get data from a json
 	//* Probably won't be used until we dynamically can update data through discord bot
 	// let response2 = await fetch('http://localhost:5000/discorddata/data.json');
