@@ -23,6 +23,7 @@ const dataHandler = require('./datahandler');
 const groupsHandler = require('./groupshandler');
 fs.watchFile('./scratch/groups.json', () => {
 	groupsHandler(client);
+	dataHandler(client);
 });
 
 //* Bot is ready

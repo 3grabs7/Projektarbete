@@ -11,6 +11,7 @@ const creatememe = require('./commands/creatememe');
 const upload = require('./commands/upload');
 const serverinfo = require('./commands/serverinfo');
 const groups = require('./commands/groups');
+const clearspam = require('./commands/spamhandler');
 
 const commands = {
 	schedule,
@@ -26,6 +27,7 @@ const commands = {
 	upload,
 	serverinfo,
 	groups,
+	clearspam,
 };
 
 module.exports = (msg) => {
