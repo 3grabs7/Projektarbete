@@ -37,6 +37,7 @@ module.exports = function (client) {
 
 function createChannels(obj, memeGuild) {
 	for (let i = 0; i < obj.length; i++) {
+		// check if category exists
 		if (
 			memeGuild.channels.cache.find(
 				(channel) => channel.name === `Grupp:${obj[i].groupId}`
@@ -45,29 +46,42 @@ function createChannels(obj, memeGuild) {
 			console.log('channel already exists');
 			continue;
 		}
-
+		// Create category for group 'i'
 		memeGuild.channels
 			.create(`Grupp:${obj[i].groupId}`, {
 				type: 'category',
 			})
 			.then((channel) => {
+				// create text channel in category 'i'
 				memeGuild.channels
 					.create('Chat osv', { type: 'text' })
 					.then((textChannel) => {
 						textChannel.setParent(channel);
 					});
 
+				// create voice channel in category 'i'
+				memeGuild.channels
+					.create('Snack osv', { type: 'voice' })
+					.then((voiceChannel) => {
+						voiceChannel.setParent(channel);
+					});
+
+				// remove view permission for everyone (except admin/creator)
 				channel.updateOverwrite(channel.guild.roles.everyone, {
 					VIEW_CHANNEL: false,
 				});
-				// Add view permission only to the members of this groups
+
+				// Add view permission for each member of group 'i'
 				for (let j = 0; j < obj[i].members.length; j++) {
+					// get id from json
 					let userId = userIds.filter(
 						(user) => user.name === obj[i].members[j]
 					)[0].id;
 					console.log(userId);
+					// get user object from user id  //* TODO - find doesn't work, read documentation
 					let user = memeGuild.members.cache.find((user) => user.id === userId);
 					console.log(user);
+
 					channel.updateOverwrite(user, { VIEW_CHANNEL: true });
 				}
 			});
