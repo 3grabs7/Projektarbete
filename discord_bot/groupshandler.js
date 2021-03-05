@@ -29,67 +29,76 @@ module.exports = function (client) {
 		(channel) => channel.name === 'general'
 	);
 
-	memeGuildGeneral.send(`@everyone ${response}`);
-	// gbgGuildGeneral.send(`@everyone ${response}`);
-
-	createChannels(json.groups, memeGuild);
+	let status = createChannels(json.groups, memeGuild);
+	if (status) {
+		memeGuildGeneral.send(`@everyone ${response}`);
+		// gbgGuildGeneral.send(`@everyone ${response}`);
+	}
 };
 
 function createChannels(obj, memeGuild) {
-	for (let i = 0; i < obj.length; i++) {
-		// check if category exists
-		if (
-			memeGuild.channels.cache.find(
-				(channel) => channel.name === `Grupp:${obj[i].groupId}`
-			)
-		) {
-			console.log('channel already exists');
-			continue;
-		}
-		// Create category for group 'i'
-		memeGuild.channels
-			.create(`Grupp:${obj[i].groupId}`, {
-				type: 'category',
-				permissionOverwrites: [
-					{
-						id: memeGuild.me.roles.highest,
-						allow: ['VIEW_CHANNEL', 'MANAGE_CHANNELS', 'MANAGE_ROLES'],
-					},
-				],
-			})
-			.then(async (channel) => {
-				// create text channel in category 'i'
-				memeGuild.channels
-					.create('Chat osv', { type: 'text' })
-					.then((textChannel) => {
-						textChannel.setParent(channel);
+	try {
+		for (let i = 0; i < obj.length; i++) {
+			// check if category exists
+			if (
+				memeGuild.channels.cache.find(
+					(channel) => channel.name === `Grupp:${obj[i].groupId}`
+				)
+			) {
+				console.log('channel already exists');
+				continue;
+			}
+			// Create category for group 'i'
+			memeGuild.channels
+				.create(`Grupp:${obj[i].groupId}`, {
+					type: 'category',
+					permissionOverwrites: [
+						{
+							id: memeGuild.me.roles.highest,
+							allow: ['VIEW_CHANNEL', 'MANAGE_CHANNELS', 'MANAGE_ROLES'],
+						},
+					],
+				})
+				.then(async (channel) => {
+					// create text channel in category 'i'
+					memeGuild.channels
+						.create('Chat osv', { type: 'text' })
+						.then((textChannel) => {
+							textChannel.setParent(channel);
+						});
+
+					// create voice channel in category 'i'
+					memeGuild.channels
+						.create('Snack osv', { type: 'voice' })
+						.then((voiceChannel) => {
+							voiceChannel.setParent(channel);
+						});
+
+					// remove view permission for everyone (except admin/creator)
+					channel.updateOverwrite(channel.guild.roles.everyone, {
+						VIEW_CHANNEL: false,
 					});
 
-				// create voice channel in category 'i'
-				memeGuild.channels
-					.create('Snack osv', { type: 'voice' })
-					.then((voiceChannel) => {
-						voiceChannel.setParent(channel);
-					});
+					// Add view permission for each member of group 'i'
+					for (let j = 0; j < obj[i].members.length; j++) {
+						// get id from json
+						let userId = userIds.filter(
+							(user) => user.name === obj[i].members[j]
+						)[0].id;
+						console.log(userId);
+						// get user object from user id
+						let user = await memeGuild.members.fetch(userId);
+						console.log(user);
 
-				// remove view permission for everyone (except admin/creator)
-				channel.updateOverwrite(channel.guild.roles.everyone, {
-					VIEW_CHANNEL: false,
+						channel.updateOverwrite(user, { VIEW_CHANNEL: true });
+					}
 				});
-
-				// Add view permission for each member of group 'i'
-				for (let j = 0; j < obj[i].members.length; j++) {
-					// get id from json
-					let userId = userIds.filter(
-						(user) => user.name === obj[i].members[j]
-					)[0].id;
-					console.log(userId);
-					// get user object from user id  //* TODO - find doesn't work, read documentation
-					let user = await memeGuild.members.fetch(userId);
-					console.log(user);
-
-					channel.updateOverwrite(user, { VIEW_CHANNEL: true });
-				}
-			});
+		}
+		return true;
+	} catch (err) {
+		console.log(
+			`Something went wrong and the bot couldn\'t create the groups on the server. Error : ${err}`
+		);
+		return false;
 	}
 }

@@ -13,6 +13,7 @@ const serverinfo = require('./commands/serverinfo');
 const groups = require('./commands/groups');
 const clearspam = require('./commands/spamhandler');
 const status = require('./commands/updatestatus');
+const roles = require('./commands/roles');
 
 const commands = {
 	schedule,
@@ -30,6 +31,7 @@ const commands = {
 	groups,
 	clearspam,
 	status,
+	roles,
 };
 
 module.exports = (msg, client) => {
