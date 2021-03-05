@@ -55,6 +55,16 @@ module.exports = function (msg, args) {
 				name: '!groups',
 				value: 'Get all current groups. Add <get> to find your group',
 				inline: false,
+			},
+			{
+				name: '!poll < Question / Statement>',
+				value: 'Settle all those fights with a poll',
+				inline: false,
+			},
+			{
+				name: '!status < Be Funny >',
+				value: 'Update bot status',
+				inline: false,
 			}
 		)
 		// .setImage(

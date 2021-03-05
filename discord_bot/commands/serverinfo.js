@@ -1,3 +1,4 @@
+//* IN PROGRESS
 module.exports = async function (msg, args) {
 	console.log('serverinfo ready');
 

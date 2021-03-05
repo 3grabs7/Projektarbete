@@ -1,3 +1,4 @@
+//* IN PROGRESS
 const emojis = {
 	leg: 'Underknät',
 	clown_face: 'Jobbig',
