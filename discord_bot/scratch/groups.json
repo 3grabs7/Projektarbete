@@ -1,11 +1,1 @@
-{
-    "groups": [
-        {
-            "groupId": "6",
-            "members": [
-                "Robin",
-                "Christopher"
-            ]
-        }
-    ]
-}
+{"groups":[{"groupId":"1","members":["Jack","Robin"]},{"groupId":"2","members":["Christopher","Stefan"]}]}

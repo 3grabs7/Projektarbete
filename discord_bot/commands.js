@@ -43,6 +43,8 @@ module.exports = (msg, client) => {
 			commands[command](msg, tokens, client);
 			return;
 		}
-		console.log('Invalid command');
+		console.log(
+			`Invalid command : '${msg.content}' Posted by user ${msg.author}`
+		);
 	}
 };
