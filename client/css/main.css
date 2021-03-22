@@ -88,6 +88,10 @@ button:hover {
   font-size: 24px;
   margin-right: 20px;
 }
+.hero__creategroups__text {
+  margin-top: 20px;
+  background-color: rgba(15, 53, 124, 0.74);
+}
 .hero__creategroups__forms {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -98,6 +102,7 @@ button:hover {
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  min-height: 200px;
   width: 100%;
   background-color: rgba(29, 103, 240, 0.534);
   border-top: 6px solid rgba(15, 53, 124, 0.74);

@@ -47,10 +47,15 @@
 				margin-right: 20px;
 			}
 		}
+		&__text {
+			margin-top: 20px;
+			background-color: $primary-color-dark;
+		}
 		&__forms {
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
+			min-height: 200px;
 			width: 100%;
 			background-color: $primary-color;
 			border-top: 6px solid $primary-color-dark;
